@@ -1,0 +1,127 @@
+body {
+  background-color: #111010;
+}
+
+.lesson-container {
+  display: flex;
+  background-color: #2E2B2B;
+  justify-content: center;
+  padding-bottom: 10px;
+}
+
+.lesson-title {
+  font-size: 35px;
+  font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+  font-weight: bold;
+  text-decoration: underline;
+  color: #2480E8;  
+}
+
+.img {
+  max-width: 65%;
+  height: 150px;
+  object-fit: contain;
+  margin: 6px 6px;
+}
+
+.text {
+  color: black;
+  font-size: 20px;
+}
+
+.container {
+  width: 100%;
+  height: auto;
+  background-color: #2E2B2B;
+  margin-top: 55px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  flex-flow: wrap;
+}
+
+.container2 {
+  width: 100%;
+  height: auto;
+  background-color: #2E2B2B;
+  margin-top: 5px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  flex-flow: wrap;
+}
+
+.box {
+  width: 30%;
+  background-color: white;
+  color: #2480E8;
+  margin: 15px;
+  border: 3px solid #2480E8;
+  text-align: center;
+  font-size: 55px;
+  font-family:Arial, Helvetica, sans-serif ;
+}
+
+@media (max-width: 320px) {
+  .img {
+    max-width: 80%;
+    object-fit: contain;
+    height: 88px;
+    margin: 6px 6px;
+  } 
+
+  .box {
+    width: 30%;
+  }
+
+  .text {
+    font-size: 15px;
+  }
+
+  .lesson-title {
+    font-size: 23px;  
+  }
+}
+
+@media (max-width: 700px) {
+  .img {
+    max-width: 80%;
+    object-fit: contain;
+    height: 88px;
+    margin: 6px 6px;
+  } 
+
+  .box {
+    width: 30%;
+  }
+
+  .text {
+    font-size: 15px;
+  }
+
+  .lesson-title {
+    font-size: 23px;  
+  }
+}      
+     
+@media (max-width: 1024px) {
+  .img {
+    max-width: 80%;
+    object-fit: contain;
+    height: 88px;
+    margin: 6px 6px;
+  } 
+
+  .box {
+    width: 30%;
+  }
+
+  .text {
+    font-size: 15px;
+  }
+
+  .lesson-title {
+    font-size: 23px;  
+  }
+}
+  
