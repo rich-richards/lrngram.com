@@ -91,22 +91,25 @@
   .header-container {
     width: 100%;
   }
+
   .text-header {
     font-size: 17px;
   }
-  
+
   .text-description {
-   font-size: 12px;
-   text-align: center;
-   margin: 5px 5px;
+    font-size: 12px;
+    text-align: center;
+    margin: 5px 5px;
   }
 
   .about-button {
     padding: 5px 10px;
+    margin-top: -20px;
   }
-  
+
   .contact-button {
     padding: 5px 10px;
+    margin-top: -20px;
   }
 
   .link-right {
@@ -122,24 +125,64 @@
 
 @media (max-width: 700px) {
   .header-container {
-    width: 100%;
+      width: 100%;
   }
+
   .text-header {
-    font-size: 17px;
+      font-size: 17px;
   }
-  
+    
   .text-description {
-   font-size: 12px;
-   text-align: center;
-   margin: 5px 5px;
+     font-size: 12px;
+     text-align: center;
+     margin: 5px 5px;
+  }
+
+  .about-button {
+      padding: 5px 10px;
+      margin-top: -20px;
+  }
+    
+  .contact-button {
+      padding: 5px 10px;
+      margin-top: -20px;
+  }
+
+  .link-right {
+      font-size: 13px; 
+      font-weight: 500;   
+  }
+
+  .link-left {
+      font-size: 13px;
+      font-weight: 500;
+  }
+}
+
+
+@media (max-width: 1024px) {
+  .header-container {
+     width: 100%;
+  }
+
+  .text-header {
+     font-size: 17px;
+  }
+
+  .text-description {
+    font-size: 12px;
+    text-align: center;
+    margin: 5px 5px;
   }
 
   .about-button {
     padding: 5px 10px;
+    margin-top: -20px;
   }
-  
+
   .contact-button {
     padding: 5px 10px;
+    margin-top: -20px;
   }
 
   .link-right {
@@ -151,40 +194,6 @@
     font-size: 13px;
     font-weight: 500;
   }
-}
-
-
-@media (max-width: 1024px) {
-    .header-container {
-      width: 100%;
-    }
-    .text-header {
-      font-size: 17px;
-    }
-    
-    .text-description {
-     font-size: 12px;
-     text-align: center;
-     margin: 5px 5px;
-    }
-
-    .about-button {
-      padding: 5px 10px;
-    }
-    
-    .contact-button {
-      padding: 5px 10px;
-    }
-
-    .link-right {
-      font-size: 13px; 
-      font-weight: 500;   
-    }
-
-    .link-left {
-      font-size: 13px;
-      font-weight: 500;
-    }
 }
     
 
