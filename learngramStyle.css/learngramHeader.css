@@ -89,11 +89,12 @@
 
 @media (max-width: 320px) {
   .header-container {
-    width: 100%;
+     width: 100%;
   }
 
   .text-header {
-    font-size: 17px;
+     font-size: 17px;
+     margin-top: 28px;
   }
 
   .text-description {
@@ -125,37 +126,38 @@
 
 @media (max-width: 700px) {
   .header-container {
-      width: 100%;
+     width: 100%;
   }
 
   .text-header {
-      font-size: 17px;
+     font-size: 17px;
+     margin-top: 28px;
   }
-    
+
   .text-description {
-     font-size: 12px;
-     text-align: center;
-     margin: 5px 5px;
+    font-size: 12px;
+    text-align: center;
+    margin: 5px 5px;
   }
 
   .about-button {
-      padding: 5px 10px;
-      margin-top: -20px;
+    padding: 5px 10px;
+    margin-top: -20px;
   }
-    
+
   .contact-button {
-      padding: 5px 10px;
-      margin-top: -20px;
+    padding: 5px 10px;
+    margin-top: -20px;
   }
 
   .link-right {
-      font-size: 13px; 
-      font-weight: 500;   
+    font-size: 13px; 
+    font-weight: 500;   
   }
 
   .link-left {
-      font-size: 13px;
-      font-weight: 500;
+    font-size: 13px;
+    font-weight: 500;
   }
 }
 
@@ -167,6 +169,7 @@
 
   .text-header {
      font-size: 17px;
+     margin-top: 28px;
   }
 
   .text-description {
