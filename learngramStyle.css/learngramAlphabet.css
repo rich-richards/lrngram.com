@@ -91,7 +91,7 @@ body {
 }
 
 @media (max-width: 320px) {
-   .Box {
+  .Box {
     width: 58%;
     height: 90px;
     font-size: 22px;

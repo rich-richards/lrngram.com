@@ -87,6 +87,30 @@ body {
   font-family: Arial, Helvetica, sans-serif;
 }
 
+.button-donate {
+  border-style: none;
+  padding: 10px 40px;
+  background-color: hsl(212, 81%, 53%);
+  margin-top: 10px;
+  margin-right: auto;
+  margin-left: auto;
+  transition: background-color 0.2s ease;
+}
+
+.button-donate:hover {
+  background-color: hsl(212, 81%, 43%);
+}
+
+.button-donate:active {
+  background-color: hsl(212, 81%, 33%);
+}
+
+.link-donate {
+  color: white;
+  font-size: 18px;
+  text-decoration: none;
+}
+
 .restart-btn:hover {
   background-color: hsl(212, 81%, 43%);
 }

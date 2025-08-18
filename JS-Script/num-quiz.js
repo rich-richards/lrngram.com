@@ -62,7 +62,12 @@ const optionsEl = document.querySelector(".options");
 const resultEl = document.querySelector(".result");
 const scoreEl = document.getElementById("score");
 const restartBtn = document.querySelector(".restart-btn");
-  
+const donateBtn = document.querySelector(".button-donate"); 
+
+
+
+
+
 function shuffle(array) {
   for (let i = array.length - 1; i > 0; i--) {
     const random = Math.floor(Math.random() * (i + 1));
@@ -132,6 +137,7 @@ function endQuiz() {
   resultEl.style.display = "block";
   scoreEl.textContent = score;
   restartBtn.style.display = "inline-block";
+  donateBtn.style.display = "block";
 }
   
   
@@ -145,6 +151,7 @@ restartBtn.addEventListener("click", () => {
   optionsEl.style.display = "block";
   resultEl.style.display = "none";
   restartBtn.style.display = "none";
+  donateBtn.style.display = "none";
   shuffle(quizData);
   loadQuestion();
   startTimer();

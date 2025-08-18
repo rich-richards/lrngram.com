@@ -1,0 +1,148 @@
+body {
+  background-color: #111010;
+}
+
+
+.lesson-container {
+  background-color: #2E2B2B;
+  display: flex;
+  justify-content: center;
+  padding-bottom: 10px;
+  box-sizing: border-box;
+}
+
+.lesson-title {
+  font-size: 35px;
+  font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+  font-weight: bold;
+  text-decoration: underline;
+  color: hsl(212, 81%, 53%);
+}
+
+
+.container {
+    border-color: hsl(212, 81%, 53%);
+    border-style: solid;
+    border-width: 3px;
+    width: 100%;
+    height: auto;
+    box-sizing: border-box;
+    background-color: white;
+    margin-top: 42px;
+}
+
+.container-p1 {
+  display: flex;
+  justify-content: center;
+  margin-left: 280px;
+  
+}
+
+.container-p2 {
+  display: flex;
+  justify-content: center;
+  margin-left: -280px;
+}
+
+.p-1 {
+  color: #5d5757;
+  font-weight: bold;
+}
+
+.p-2 {
+  color: #060606;
+  font-weight: bold;
+}
+
+.per-1 {
+  font-size: 18px;
+  font-family: Arial, Helvetica, sans-serif;
+  color: hsl(212, 81%, 53%);
+}
+
+.per-2 {
+  font-size: 18px;
+  font-family: Arial, Helvetica, sans-serif;
+  color: hsl(212, 81%, 53%);
+}
+
+.email-container {
+  background-color: hsl(212, 81%, 53%);
+  display: flex;
+  justify-content: center;
+  margin-top: 8px;
+}
+
+.email-text {
+  color: white;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 16px;
+}
+
+
+
+
+
+@media screen and (max-width: 320px) {
+  .lesson-title {
+    font-size: 23px;
+  }
+
+  .container-p1 {
+    display: flex;
+    justify-content: center;
+    margin-left: 180px;
+
+  }
+
+  .container-p2 {
+    display: flex;
+    justify-content: center;
+    margin-left: -180px;
+  }
+
+  .per-1 {
+    font-size: 9px;
+  }
+
+  .per-2 {
+    font-size: 9px;
+  }
+
+  .email-text {
+    font-size: 11px;
+  }
+}
+
+
+
+@media screen and (max-width: 1024px) {
+  .lesson-title {
+    font-size: 23px;
+  }
+
+  .container-p1 {
+    display: flex;
+    justify-content: center;
+    margin-left: 180px;
+
+  }
+
+  .container-p2 {
+    display: flex;
+    justify-content: center;
+    margin-left: -180px;
+  }
+
+  .per-1 {
+    font-size: 9px;
+  }
+
+  .per-2 {
+    font-size: 9px;
+  }
+
+  .email-text {
+    font-size: 11px;
+  }
+}
