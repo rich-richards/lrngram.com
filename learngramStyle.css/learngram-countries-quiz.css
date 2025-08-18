@@ -166,6 +166,14 @@ body {
   .title-quiz {
     font-size: 23px;
   }
+
+  .button-donate {
+     padding: 5px 30px;   
+   }
+
+  .link-donate {
+    font-size: 15px;
+  }
 }
 
 
@@ -209,6 +217,14 @@ body {
   .title-quiz {
     font-size: 23px;
   }
+
+  .button-donate {
+     padding: 5px 30px;   
+   }
+
+  .link-donate {
+    font-size: 15px;
+  }
 }
 
 
@@ -251,6 +267,14 @@ body {
 
   .title-quiz {
     font-size: 23px;
+  }
+
+  .button-donate {
+     padding: 5px 30px;   
+   }
+
+  .link-donate {
+    font-size: 15px;
   }
 }
 

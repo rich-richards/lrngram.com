@@ -256,6 +256,14 @@ body {
   .title-quiz {
     font-size: 23px;
   }
+
+  .button-donate {
+     padding: 5px 30px;   
+   }
+
+  .link-donate {
+    font-size: 15px;
+  }
 }
 
 @media (max-width: 700px) {
@@ -293,6 +301,14 @@ body {
   .title-quiz {
     font-size: 23px;
   }
+
+  .button-donate {
+     padding: 5px 30px;   
+   }
+
+  .link-donate {
+    font-size: 15px;
+  }
 }
     
 @media (max-width: 1024px) {
@@ -329,5 +345,13 @@ body {
 
   .title-quiz {
     font-size: 23px;
+  }
+
+  .button-donate {
+     padding: 5px 30px;   
+   }
+
+  .link-donate {
+    font-size: 15px;
   }
 }
