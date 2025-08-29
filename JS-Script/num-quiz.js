@@ -1,53 +1,53 @@
 const quizData = [
     {
-      question: "What is number 10 in letter?",    
+      question: "10?",    
       options: ["TWENTY", "EIGHT", "NINETY", "TEN"],
       answer: "TEN"
     },
     {
-      question: "What is number 75 in letter?",
-      options: ["SIXTY-FOUR", "SEVENTY", "SEVENTY-FIVE", "FIFTY-EIGHT"],
-      answer: "SEVENTY-FIVE"
+      question: "Seventy-five?",
+      options: ["64", "70", "75", "58"],
+      answer: "75"
     },
     {
-      question: "What is number 45 in letter?",
-      options: ["FOURTY-FIVE", "THIRTY", "TWENTY-EIGHT", "NINETY-ONE",],
-      answer: "FOURTY-FIVE"
+      question: "45?",
+      options: ["FORTY-FIVE", "THIRTY", "TWENTY-EIGHT", "NINETY-ONE",],
+      answer: "FORTY-FIVE"
     },
     {
-      question: "What is number 5 in letter?",
-      options: ["FIFTY", "TWENTY-TWO", "SEVEN", "FIVE",],
-      answer: "FIVE"
+      question: "Five?",
+      options: ["50", "22", "7", "5",],
+      answer: "5"
     },
     {
-      question: "What is number 100 in letter?",
-      options: ["NINETY", "HUNDRED", "SEVENTY", "FOURTY",],
+      question: "100?",
+      options: ["NINETY", "HUNDRED", "SEVENTY", "FORTY",],
       answer: "HUNDRED"
     },
      {
-      question: "What is number 26 in letter?",
-      options: ["FOURTY-ONE", "SIXTY", "NINETY-SIX", "TWENTY-SIX",],
-      answer: "TWENTY-SIX"
+      question: "Twenty-six?",
+      options: ["41", "60", "96", "26",],
+      answer: "26"
     },
      {
-      question: "What is number 59 in letter?",
-      options: ["EIGHTY-TWO", "FIFTY-NINE", "FOURTY-THREE", "SIXTY-NINE",],
+      question: "59?",
+      options: ["EIGHTY-TWO", "FIFTY-NINE", "FORTY-THREE", "SIXTY-NINE",],
       answer: "FIFTY-NINE"
     },
      {
-      question: "What is number 22 in letter?",
-      options: ["SEVENTY", "SIXTY-TWO", "TWENTY-TWO", "FIFTY-THREE",],
-      answer: "TWENTY-TWO"
+      question: "Twenty-two?",
+      options: ["73", "62", "22", "53",],
+      answer: "22"
     },
      {
-      question: "What is number 57 in letter?",
-      options: ["FIFTY-SEVEN", "FIFTY-FOUR", "SIXTY-SEVEN", "TWOLF",],
+      question: "57?",
+      options: ["FIFTY-SEVEN", "FIFTY-FOUR", "SIXTY-SEVEN", "TWELVE",],
       answer: "FIFTY-SEVEN"
     },
      {
-      question: "What is number 80 in letter?",
-      options: ["NINETY", "FOURTY-THREE", "THIRTY-TWO", "EIGHTY",],
-      answer: "EIGHTY"
+      question: "Eighty?",
+      options: ["90", "43", "32", "80",],
+      answer: "80"
     }
   ];
   
