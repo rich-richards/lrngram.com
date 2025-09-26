@@ -25,24 +25,250 @@ body {
     border-style: solid;
     border-width: 3px;
     width: 100%;
-    height: auto;
+    height: 1600px;
     box-sizing: border-box;
     background-color: white;
     margin-top: 42px;
 }
 
-.container-p1 {
+.input-container {
+  margin-top: 28px;
   display: flex;
-  justify-content: center;
-  margin-left: 280px;
+  justify-content: space-around;
   
 }
 
-.container-p2 {
+.input-container2 {
+  margin-top: 28px;
+  display: flex;
+  justify-content: space-around;
+  
+}
+
+.container-1 {
+  display: flex;
+  justify-content: center;
+  margin-left: 280px;
+  margin-top: 68px;
+}
+
+.container-2 {
   display: flex;
   justify-content: center;
   margin-left: -280px;
 }
+
+
+.container-3 {
+  display: flex;
+  justify-content: center;
+  margin-left: 280px;
+  margin-top: 22px;
+}
+
+.container-4 {
+  display: flex;
+  justify-content: center;
+  margin-left: -280px;
+}
+
+.container-5 {
+  display: flex;
+  justify-content: center;
+  margin-left: 280px;
+  margin-top: 22px;
+}
+
+.container-6 {
+  display: flex;
+  justify-content: center;
+  margin-left: -280px;
+  margin-top: 22px;
+
+}
+
+.container-7 {
+  display: flex;
+  justify-content: center;
+  margin-left: 280px;
+  margin-top: 22px;
+;
+}
+
+.container-8 {
+  display: flex;
+  justify-content: center;
+  margin-left: -280px;
+  margin-top: 22px;
+
+}
+
+.container-9 {
+  display: flex;
+  justify-content: center;
+  margin-left: 280px;
+  margin-top: 22px;
+
+}
+
+.container-10 {
+  display: flex;
+  justify-content: center;
+  margin-left: -280px;
+  margin-top: 22px;
+
+}
+
+.container-11 {
+  display: flex;
+  justify-content: center;
+  margin-left: 280px;
+  margin-top: 22px;
+
+}
+
+.container-12 {
+  display: flex;
+  justify-content: center;
+  margin-left: -280px;
+  margin-top: 22px;
+
+}
+
+.namePut {
+  border: 2px solid hsl(212, 81%, 53%);
+  border-radius: 3px;
+  color: #111010;
+  width: 50%;
+  padding: 3px 8px;
+  font-size: 0.9rem;
+  margin-top: 6px;
+}
+
+.namePutFriend {
+  border: 2px solid hsl(212, 81%, 53%);
+  border-radius: 3px;
+  color: #111010;
+  width: 70%;
+  padding: 3px 8px;
+  font-size: 0.9rem;
+  margin-top: 6px;
+}
+
+.countryPut {
+  border: 2px solid hsl(212, 81%, 53%);
+  border-radius: 3px;
+  color: #111010;
+  width: 50%;
+  padding: 3px 8px;
+  font-size: 0.9rem;
+  margin-top: 6px;
+}
+
+.countryPutFriend {
+  border: 2px solid hsl(212, 81%, 53%);
+  border-radius: 3px;
+  color: #111010;
+  width: 72%;
+  padding: 3px 8px;
+  font-size: 0.9rem;
+  margin-top: 6px;
+}
+
+.agePut {
+  border: 2px solid hsl(212, 81%, 53%);
+  border-radius: 3px;
+  color: #111010;
+  width: 50%;
+  padding: 3px 8px;
+  font-size: 0.9rem;
+  margin-top: 6px;
+}
+
+.agePutFriend {
+  border: 2px solid hsl(212, 81%, 53%);
+  border-radius: 3px;
+  color: #111010;
+  width: 70%;
+  padding: 3px 8px;
+  font-size: 0.9rem;
+  margin-top: 6px;
+}
+
+.added-element {
+  color: rgb(0, 255, 0);
+  font-size: 18px;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.putInfos {
+  color: #111010;
+  font-size: 14px;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+
+
+.jsPutInfos {
+  color: rgb(0, 255, 0);
+  font-size: 16px;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.jsPutInfos2 {
+  color: rgb(0, 255, 0);
+  font-size: 16px;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.jsPutInfos3 {
+  color: rgb(0, 255, 0);
+  font-size: 16px;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+
+.jsPutInfos4 {
+  color: rgb(0, 255, 0);
+  font-size: 16px;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+
+.jsPutInfos5 {
+  color: rgb(0, 255, 0);
+  font-size: 16px;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+
+.jsPutInfos6 {
+  color: rgb(0, 255, 0);
+  font-size: 16px;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+
+.sendBtn {
+  padding: 4px;
+  background-color: hsl(212, 81%, 53%);
+  color: white;
+  font-size: 14px;
+  margin-left: 3px;
+  font-family: Arial, Helvetica, sans-serif;
+  border-style: none;
+  border-radius: 3px;
+  cursor: pointer;
+}
+
+.sendBtn:hover {
+  background-color: hsl(212, 81%, 43%);
+}
+
+.sendBtn:active {
+  background-color: hsl(212, 81%, 33%);
+}
+
 
 .p-1 {
   color: #5d5757;
@@ -76,7 +302,7 @@ body {
 .email-text {
   color: white;
   font-family: Arial, Helvetica, sans-serif;
-  font-size: 16px;
+  font-size: 18px;
 }
 
 
@@ -84,22 +310,198 @@ body {
 
 
 @media screen and (max-width: 320px) {
-  .lesson-title {
+ .lesson-title {
     font-size: 23px;
   }
 
-  .container-p1 {
+
+  .added-element {
+    font-size: 9px;
+  }
+
+  .container-1 {
     display: flex;
     justify-content: center;
-    margin-left: 180px;
+    margin-left: 80px;
 
   }
 
-  .container-p2 {
+  .container-2 {
     display: flex;
     justify-content: center;
-    margin-left: -180px;
+    margin-left: -80px;
   }
+
+  
+  .container-3 {
+    display: flex;
+    justify-content: center;
+    margin-left: 80px;
+
+  }
+
+  .container-4 {
+    display: flex;
+    justify-content: center;
+    margin-left: -80px;
+  }
+
+  
+  .container-5 {
+    display: flex;
+    justify-content: center;
+    margin-left: 80px;
+
+  }
+
+  .container-6 {
+    display: flex;
+    justify-content: center;
+    margin-left: -80px;
+  }
+
+  
+  .container-7 {
+    display: flex;
+    justify-content: center;
+    margin-left: 80px;
+
+  }
+
+  .container-8 {
+    display: flex;
+    justify-content: center;
+    margin-left: -80px;
+  }
+
+  
+  .container-9 {
+    display: flex;
+    justify-content: center;
+    margin-left: 80px;
+
+  }
+
+  .container-10 {
+    display: flex;
+    justify-content: center;
+    margin-left: -80px;
+  }
+
+  
+  .container-11 {
+    display: flex;
+    justify-content: center;
+    margin-left: 80px;
+
+  }
+
+  .container-12 {
+    display: flex;
+    justify-content: center;
+    margin-left: -80px;
+  }
+
+  .input-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+ 
+  
+  .input-container2 {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+
+
+  .namePut {
+    width: 52%;
+    font-size: 9px;
+  }
+
+  .namePutFriend {
+    width: 58%;
+    font-size: 9px;
+
+  
+  }
+
+  .countryPut {
+    width: 52%;
+    font-size: 9px;
+
+  }
+
+  .countryPutFriend {
+    width: 62%;
+    font-size: 9px;
+
+  }
+
+  .agePut {
+    width: 52%;
+    font-size: 9px;
+
+  }
+
+  .agePutFriend {
+    width: 52%;
+    font-size: 9px;
+
+  }
+
+  .sendBtn {
+    padding: 2px;
+    font-size: 10px;
+  }
+
+
+
+  .putInfos {
+    color: #111010;
+    font-size: 14px;
+    font-family: Arial, Helvetica, sans-serif;
+  }
+
+
+
+  .jsPutInfos {
+    font-size: 11px;
+  }
+
+  .jsPutInfos2 {
+    font-size: 11px;
+
+  }
+
+  .jsPutInfos3 {
+   font-size: 11px;
+  }
+
+
+  .jsPutInfos4 {
+   font-size: 11px;
+  }
+
+
+  .jsPutInfos5 {
+   font-size: 11px;
+  }
+
+
+  .jsPutInfos6 {
+    font-size: 11px;
+  }
+
+  .putInfos {
+    font-size: 12px;
+  }
+
+
 
   .per-1 {
     font-size: 9px;
@@ -112,7 +514,217 @@ body {
   .email-text {
     font-size: 11px;
   }
+
 }
+
+@media screen and (max-width: 700px) {
+   .lesson-title {
+    font-size: 23px;
+  }
+
+
+  .added-element {
+    font-size: 9px;
+  }
+
+  .container-1 {
+    display: flex;
+    justify-content: center;
+    margin-left: 80px;
+
+  }
+
+  .container-2 {
+    display: flex;
+    justify-content: center;
+    margin-left: -80px;
+  }
+
+  
+  .container-3 {
+    display: flex;
+    justify-content: center;
+    margin-left: 80px;
+
+  }
+
+  .container-4 {
+    display: flex;
+    justify-content: center;
+    margin-left: -80px;
+  }
+
+  
+  .container-5 {
+    display: flex;
+    justify-content: center;
+    margin-left: 80px;
+
+  }
+
+  .container-6 {
+    display: flex;
+    justify-content: center;
+    margin-left: -80px;
+  }
+
+  
+  .container-7 {
+    display: flex;
+    justify-content: center;
+    margin-left: 80px;
+
+  }
+
+  .container-8 {
+    display: flex;
+    justify-content: center;
+    margin-left: -80px;
+  }
+
+  
+  .container-9 {
+    display: flex;
+    justify-content: center;
+    margin-left: 80px;
+
+  }
+
+  .container-10 {
+    display: flex;
+    justify-content: center;
+    margin-left: -80px;
+  }
+
+  
+  .container-11 {
+    display: flex;
+    justify-content: center;
+    margin-left: 80px;
+
+  }
+
+  .container-12 {
+    display: flex;
+    justify-content: center;
+    margin-left: -80px;
+  }
+
+  .input-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+ 
+  
+  .input-container2 {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+
+
+  .namePut {
+    width: 52%;
+    font-size: 9px;
+  }
+
+  .namePutFriend {
+    width: 58%;
+    font-size: 9px;
+
+  
+  }
+
+  .countryPut {
+    width: 52%;
+    font-size: 9px;
+
+  }
+
+  .countryPutFriend {
+    width: 62%;
+    font-size: 9px;
+
+  }
+
+  .agePut {
+    width: 52%;
+    font-size: 9px;
+
+  }
+
+  .agePutFriend {
+    width: 52%;
+    font-size: 9px;
+
+  }
+
+  .sendBtn {
+    padding: 2px;
+    font-size: 10px;
+  }
+
+
+
+  .putInfos {
+    color: #111010;
+    font-size: 14px;
+    font-family: Arial, Helvetica, sans-serif;
+  }
+
+
+
+  .jsPutInfos {
+    font-size: 11px;
+  }
+
+  .jsPutInfos2 {
+    font-size: 11px;
+
+  }
+
+  .jsPutInfos3 {
+   font-size: 11px;
+  }
+
+
+  .jsPutInfos4 {
+   font-size: 11px;
+  }
+
+
+  .jsPutInfos5 {
+   font-size: 11px;
+  }
+
+
+  .jsPutInfos6 {
+    font-size: 11px;
+  }
+
+  .putInfos {
+    font-size: 12px;
+  }
+
+
+
+  .per-1 {
+    font-size: 9px;
+  }
+
+  .per-2 {
+    font-size: 9px;
+  }
+
+  .email-text {
+    font-size: 11px;
+  }
+
+}
+
 
 
 
@@ -121,18 +733,194 @@ body {
     font-size: 23px;
   }
 
-  .container-p1 {
+
+  .added-element {
+    font-size: 9px;
+  }
+
+  .container-1 {
     display: flex;
     justify-content: center;
-    margin-left: 180px;
+    margin-left: 80px;
 
   }
 
-  .container-p2 {
+  .container-2 {
     display: flex;
     justify-content: center;
-    margin-left: -180px;
+    margin-left: -80px;
   }
+
+  
+  .container-3 {
+    display: flex;
+    justify-content: center;
+    margin-left: 80px;
+
+  }
+
+  .container-4 {
+    display: flex;
+    justify-content: center;
+    margin-left: -80px;
+  }
+
+  
+  .container-5 {
+    display: flex;
+    justify-content: center;
+    margin-left: 80px;
+
+  }
+
+  .container-6 {
+    display: flex;
+    justify-content: center;
+    margin-left: -80px;
+  }
+
+  
+  .container-7 {
+    display: flex;
+    justify-content: center;
+    margin-left: 80px;
+
+  }
+
+  .container-8 {
+    display: flex;
+    justify-content: center;
+    margin-left: -80px;
+  }
+
+  
+  .container-9 {
+    display: flex;
+    justify-content: center;
+    margin-left: 80px;
+
+  }
+
+  .container-10 {
+    display: flex;
+    justify-content: center;
+    margin-left: -80px;
+  }
+
+  
+  .container-11 {
+    display: flex;
+    justify-content: center;
+    margin-left: 80px;
+
+  }
+
+  .container-12 {
+    display: flex;
+    justify-content: center;
+    margin-left: -80px;
+  }
+
+  .input-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+ 
+  
+  .input-container2 {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+
+
+  .namePut {
+    width: 52%;
+    font-size: 9px;
+  }
+
+  .namePutFriend {
+    width: 58%;
+    font-size: 9px;
+
+  
+  }
+
+  .countryPut {
+    width: 52%;
+    font-size: 9px;
+
+  }
+
+  .countryPutFriend {
+    width: 62%;
+    font-size: 9px;
+
+  }
+
+  .agePut {
+    width: 52%;
+    font-size: 9px;
+
+  }
+
+  .agePutFriend {
+    width: 52%;
+    font-size: 9px;
+
+  }
+
+  .sendBtn {
+    padding: 2px;
+    font-size: 10px;
+  }
+
+
+
+  .putInfos {
+    color: #111010;
+    font-size: 14px;
+    font-family: Arial, Helvetica, sans-serif;
+  }
+
+
+
+  .jsPutInfos {
+    font-size: 11px;
+  }
+
+  .jsPutInfos2 {
+    font-size: 11px;
+
+  }
+
+  .jsPutInfos3 {
+   font-size: 11px;
+  }
+
+
+  .jsPutInfos4 {
+   font-size: 11px;
+  }
+
+
+  .jsPutInfos5 {
+   font-size: 11px;
+  }
+
+
+  .jsPutInfos6 {
+    font-size: 11px;
+  }
+
+  .putInfos {
+    font-size: 12px;
+  }
+
+
 
   .per-1 {
     font-size: 9px;
@@ -144,5 +932,215 @@ body {
 
   .email-text {
     font-size: 11px;
+  }
+
+}
+
+
+
+@media (min-width: 900px) {
+  .lesson-title {
+    font-size: 32px;
+  }
+  
+  
+  .container {
+    padding-bottom: 2000px;
+  }
+  
+ 
+ 
+  .added-element {
+    font-size: 18px;
+  }
+  
+  
+  .per-1 {
+    font-size: 18px;
+  }
+
+  .per-2 {
+    font-size: 18px;
+  }
+
+  .container-1 {
+    display: flex;
+    justify-content: center;
+    margin-left: 280px;
+
+  }
+
+  .container-2 {
+    display: flex;
+    justify-content: center;
+    margin-left: -280px;
+  }
+
+  
+  .container-3 {
+    display: flex;
+    justify-content: center;
+    margin-left: 280px;
+
+  }
+
+  .container-4 {
+    display: flex;
+    justify-content: center;
+    margin-left: -280px;
+  }
+
+  .container-5 {
+    display: flex;
+    justify-content: center;
+    margin-left: 280px;
+
+  }
+
+  .container-6 {
+    display: flex;
+    justify-content: center;
+    margin-left: -280px;
+  }
+
+  .container-7 {
+    display: flex;
+    justify-content: center;
+    margin-left: 280px;
+
+  }
+
+  .container-8 {
+    display: flex;
+    justify-content: center;
+    margin-left: -280px;
+  }
+
+  .container-9 {
+    display: flex;
+    justify-content: center;
+    margin-left: 280px;
+
+  }
+
+  .container-10 {
+    display: flex;
+    justify-content: center;
+    margin-left: -280px;
+  }
+
+  .container-11 {
+    display: flex;
+    justify-content: center;
+    margin-left: 280px;
+
+  }
+
+  .container-12 {
+    display: flex;
+    justify-content: center;
+    margin-left: -280px;
+  }
+
+
+  .namePut {
+    width: 68%;
+    font-size: 14px;
+  }
+
+  .namePutFriend {
+    width: 68%;
+    font-size: 14px;;
+
+  
+  }
+
+  .countryPut {
+    width: 68%;
+    font-size: 14px;
+
+  }
+
+  .countryPutFriend {
+    width: 68%;
+    font-size: 14px;
+
+  }
+
+  .agePut {
+    width: 68%;
+    font-size: 14px;
+
+  }
+
+  .agePutFriend {
+    width: 68%;
+    font-size: 14px;
+
+  }
+
+  .sendBtn {
+    padding: 4px 6px;
+    font-size: 14px;
+  }
+
+
+
+  .putInfos {
+    color: #111010;
+    font-size: 14px;
+    font-family: Arial, Helvetica, sans-serif;
+  }
+
+
+
+  .jsPutInfos {
+    font-size: 14px;
+  }
+
+  .jsPutInfos2 {
+    font-size: 14px;
+
+  }
+
+  .jsPutInfos3 {
+   font-size: 14px;
+  }
+
+
+  .jsPutInfos4 {
+   font-size: 14px;
+  }
+
+
+  .jsPutInfos5 {
+   font-size: 14px;
+  }
+
+
+  .jsPutInfos6 {
+    font-size: 14px;
+  }
+
+  .putInfos {
+    font-size: 16px;
+  }
+
+  .email-text {
+    font-size: 16px;
+  }
+
+}
+
+@media (min-width: 1024px) {
+  .container {
+    padding-bottom: 2000px;
+  }
+}
+
+
+@media (min-width: 912px) {
+  .container {
+    padding-bottom: 2000px;
   }
 }
