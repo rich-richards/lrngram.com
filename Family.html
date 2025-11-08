@@ -1,0 +1,144 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Family Members & Relationships</title>
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+<meta name="description" content="Learngram Family lesson: fetches Wikipedia + Commons images/audio/video, TTS, suggestions, responsive e-book." />
+<link rel="stylesheet" href="learngram_CSS/family.css">
+</head>
+<body>
+  <div class="wrap" role="main">
+    <header>
+      <div class="logo">LG</div>
+      <div class="title">
+        <h1>Lesson 7: Family Members & Relationships</h1>
+        <p class="lead">Type a family member, fetch matching info, images and sounds. Practice and save progress.</p>
+      </div>
+    </header>
+
+    <div class="ebook">
+      <div class="layout">
+        <!-- left -->
+        <nav aria-label="Contents">
+          <h3>Quick examples</h3>
+          <div class="examples" id="examplesList"></div>
+
+          <div style="margin-top:14px">
+            <h3>Vocabulary table</h3>
+            <div class="card" style="padding:10px">
+              <div><strong>Immediate:</strong> mother, father, sister, brother, son, daughter, grandparents</div>
+              <div style="margin-top:8px"><strong>Extended:</strong> aunt, uncle, cousin, niece, nephew</div>
+              <div style="margin-top:8px"><strong>Other:</strong> spouse, partner, in-law</div>
+            </div>
+          </div>
+
+          <div style="margin-top:14px">
+            <h3>Lesson objectives</h3>
+            <div class="card" style="padding:10px">
+              <div>• Learn family vocabulary</div>
+              <div style="margin-top:6px">• Describe relationships (possessives)</div>
+              <div style="margin-top:6px">• Practice with media & TTS</div>
+            </div>
+          </div>
+        </nav>
+
+        <!-- right -->
+        <main>
+          <section class="card" aria-labelledby="title">
+            <h2 id="title">Interactive Search</h2>
+            <p class="lead-note">Type a family member (for example <em>mother</em> or <em>grandfather</em>) and press <strong>Search</strong>. The lesson will fetch Wikipedia & Commons data and validate whether the result matches the term you typed.</p>
+
+            <div class="row" style="margin-top:12px">
+              <div class="input-group">
+                <input id="familyInput" type="text" placeholder="Type a family member (e.g. 'Mother')" aria-label="family member" />
+                <button id="searchBtn" class="btn">Search</button>
+                <button id="ttsBtn" class="ghost" title="Speak last description">🔊</button>
+              </div>
+            </div>
+
+            <div id="status" class="status" aria-live="polite"></div>
+
+            <div id="resultArea" class="media-row" style="display:none;margin-top:12px">
+              <div class="media" id="infoCard">
+                <strong>Info</strong>
+                <div id="infoText" class="placeholder">No info yet.</div>
+              </div>
+              <div class="media" id="imageCard">
+                <strong>Image</strong>
+                <div id="imageSlot" class="placeholder">No image yet.</div>
+              </div>
+              <div class="media" id="audioCard">
+                <strong>Audio</strong>
+                <div id="audioSlot" class="placeholder">No audio yet.</div>
+              </div>
+            </div>
+
+            <div id="videoRow" style="display:none;margin-top:12px">
+              <div class="media" style="grid-column:1/-1" id="videoCard">
+                <strong>Video / More</strong>
+                <div id="videoSlot" class="placeholder">No video yet.</div>
+              </div>
+            </div>
+
+            <div id="suggestBox" class="suggestions" aria-hidden="true"></div>
+
+            <div class="lesson-structure" style="margin-top:12px">
+              <h3>Suggested Lesson Structure</h3>
+              <ol>
+                <li><strong>Introduction (5 min)</strong> — talk about family members</li>
+                <li><strong>Vocabulary (15 min)</strong> — teach immediate & extended family</li>
+                <li><strong>Grammar (15 min)</strong> — possessives (my, his, her) and "X of Y"</li>
+                <li><strong>Practice (20 min)</strong> — family tree, role-play, group sharing</li>
+                <li><strong>Conclusion (5 min)</strong> — review and feedback</li>
+              </ol>
+            </div>
+          </section>
+
+          <section class="card" aria-labelledby="practice">
+            <h2 id="practice">Practice & Examples</h2>
+            <p class="lead-note">Click an example to fetch matching data. Try to say a sentence (TTS available) and save to progress.</p>
+            <div class="examples-grid" id="examplesGrid"></div>
+
+            <div style="margin-top:12px;display:flex;gap:8px;flex-wrap:wrap;align-items:center">
+              <button id="saveBtn" class="btn">Save to Progress</button>
+              <button id="clearProgressBtn" class="ghost">Clear Progress</button>
+              <div id="progressMsg" class="status" style="margin-left:6px"></div>
+            </div>
+
+            <div style="margin-top:12px">
+              <h3>Saved Progress</h3>
+              <div id="progressList" class="examples-grid"></div>
+            </div>
+          </section>
+          
+          <!-- MINI-GAME -->
+          <div class="game-container">
+            <h3 class="h3">👨‍👩‍👧 Family Lesson Game</h3>
+            <button id="startBtn" class="start-btn">🚀 Start Game</button>
+
+            <div id="gameArea" class="hidden">
+            <p class="timer">⏱️ Time Left: <span id="time">30</span>s</p>
+            <div class="progress-bar"><div class="progress" id="progress"></div></div>
+
+            <div class="image-area">
+            <img id="familyImage" src="" alt="Family Member" />
+            </div>
+
+            <div class="options" id="options"></div>
+            <div class="result" id="result"></div>
+            <button class="restart-btn" id="restart" style="display:none;">🔁 Try Again</button>
+            </div>
+          </div>
+
+          <footer style="margin-top:12px;color:var(--muted)">Made with 💙 by Learngram — responsive family lesson.</footer>
+          <a href="index.html">Back to home</a>
+        </main>
+      </div>
+    </div>
+  </div>
+
+  <script src="learngram_JS/family.js"></script>
+</body>
+</html>

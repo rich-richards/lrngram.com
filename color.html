@@ -1,0 +1,133 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Colors lesson</title>
+<meta name="description" content="Learngram Color Lesson. Type a color name, see a swatch, fetch matching image/audio/video from Wikimedia Commons, TTS fallback, and a mini-game to select the right color."/>
+<link rel="stylesheet" href="learngram_CSS/color.css">
+</head>
+<body>
+  <div class="container">
+    <header>
+      <div class="logo">LG</div>
+      <div class="title">
+        <h1>Lesson 3: Colors</h1>
+        <p class="lead">Type a color name (e.g., "red") and fetch matching images, audio and video. Includes TTS fallback and a color-selection mini-game.</p>
+      </div>
+    </header>
+
+    <div class="ebook">
+      <div class="columns">
+        <nav aria-label="Contents">
+          <h3>Contents</h3>
+          <ul>
+            <li class="active contents" data-section="lesson">Lesson: Colors</li>
+            <li data-section="how" class="contents">How it works</li>
+            <li data-section="download" class="contents">Download / Export</li>
+            <li data-section="settings" class="contents">Settings</li>
+          </ul>
+        </nav>
+
+        <main class="content">
+          <section id="lesson" class="card" aria-labelledby="lessonHeading">
+            <h2 id="lessonHeading">Color Lesson — Try it</h2>
+
+            <div class="lesson-top">
+              <div id="swatch" class="swatch" style="background:#444;color:white">No color</div>
+
+              <div class="lesson-info">
+                <div class="input-row" role="form">
+                  <input id="colorInput" type="text" placeholder="Type a color name" aria-label="Color input"/>
+                  <button id="fetchColorBtn" class="btn">Fetch</button>
+                  <button id="speakColorBtn" class="btn">🔊 Speak</button>
+                  <button id="clearColorBtn" class="btn" >Clear</button>
+                </div>
+
+                <div class="controls">
+                  <label><input type="checkbox" id="useWikimedia" checked /> Use Wikimedia Commons</label>
+                  <label><input type="checkbox" id="autoSpeak" checked /> Auto TTS fallback</label>
+                </div>
+
+                <div id="colorFeedback" class="feedback" aria-live="polite"></div>
+
+                <div class="note">Enter a color name (CSS color names are supported). The lesson will attempt to fetch relevant media that contains that color (searches like "red apple", "blue sky").</div>
+              </div>
+            </div>
+
+            <div class="card" style="margin-top:12px">
+              <h3>Example colors (click to load)</h3>
+              <div id="examples" class="example-list"></div>
+            </div>
+
+            <div class="media-row" aria-label="Media results">
+              <div class="media">
+                <strong>Image</strong>
+                <div id="imageContainer" class="placeholder">No image yet</div>
+              </div>
+
+              <div class="media">
+                <strong>Audio</strong>
+                <div id="audioContainer" class="placeholder">No audio yet</div>
+              </div>
+
+              <div class="media">
+                <strong>Video</strong>
+                <div id="videoContainer" class="placeholder">No video yet</div>
+              </div>
+            </div>
+
+          </section>
+          <!-- HOW -->
+          <section id="how" class="card" style="display:none">
+            <h2>How it works</h2>
+            <ol>
+              <li>User types a color name (validation checks it looks like text).</li>
+              <li>App chooses an example search phrase (e.g., "red apple") to improve Wikimedia results.</li>
+              <li>Search Wikimedia Commons for images/audio/video using API (no keys required).</li>
+              <li>If audio not found, use Web Speech API (TTS) to speak the color name.</li>
+            </ol>
+          </section>
+
+             <!-- DOWNLOAD -->
+          <section id="download" class="card" style="display:none">
+            <h2>Download / Export</h2>
+            <p class="note">Save this single HTML file or use Print → Save as PDF for an offline copy. If you use curated media (local files), package those media files alongside this HTML.</p>
+            <button class="print-btn" id="printBtn">Print / Save as PDF</button>
+          </section>
+
+          <!-- SETTINGS -->
+          <section id="settings" class="card" style="display:none">
+            <h2>Settings</h2>
+            <p class="note">Toggle behaviors. Curated media is best for packaging the e-book with local files.</p>
+            <label style="display:block;margin-top:8px"><input type="checkbox" id="persistEnabled" checked /> Persist progress in localStorage</label>
+          </section>
+
+          <!-- GAMIFIED SECTION -->
+          <section id="games" class="game" aria-labelledby="gamesHeading">
+            <h3 id="gamesHeading">Mini-game — Pick the Right Color</h3>
+            <p class="small">Listen or read the color word, then pick the matching color square. Score is saved in your browser.</p>
+
+            <div class="controls" style="margin-top:10px">
+              <div>
+                <button id="startGuessBtn" class="btn">Start Guess Game</button>
+                <button id="startTimedBtn" class="btn" title="60-second quiz">Start Timed Quiz</button>
+                <button id="resetScores">Reset Scores</button>
+              </div>
+              <div class="small">Score: <span id="gameScore">0</span> • Best: <span id="gameBest">0</span> • Time: <span id="gameTime">—</span></div>
+            </div>
+
+            <div id="gameQuestion" style="margin-top:12px;font-weight:700;"></div>
+            <div id="gameChoices" class="choices" aria-live="polite"></div>
+            <div id="gameMsg" style="margin-top:10px" class="small"></div>
+          </section>
+           <footer style="margin-top:12px;color:var(--muted)">Made with 💙 by Learngram — responsive colors lesson.</footer>
+           <a href="index.html">Back to home</a>
+        </main>
+      </div>
+    </div>
+  </div>
+
+<script src="learngram_JS/color.js"></script>
+</body>
+</html>

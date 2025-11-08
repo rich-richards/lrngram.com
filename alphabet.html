@@ -1,0 +1,150 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Alphabet lesson</title>
+  <meta name="description" content="Learngram Chapter 1: Alphabet. Type a letter (A–Z) to fetch matching image, sound and video examples from Wikimedia Commons. Includes TTS fallback and offline curated media map." />
+  <link rel="stylesheet" href="learngram_CSS/alphabet.css">
+</head>
+<body>
+  <div class="container" role="main">
+    <header>
+      <div class="logo">LG</div>
+      <div class="title">
+        <h1>lesson 1: Alphabet</h1>
+        <p class="lead">Interactive alphabet lesson. Type a letter (A–Z). Fetch images, audio, video (Wikimedia). Use curated media for offline reliability. Includes mini-game and progress saving.</p>
+      </div>
+    </header>
+
+    <div class="ebook" aria-labelledby="ebookTitle">
+      <div class="columns">
+        <nav aria-label="Contents">
+          <h3>Contents</h3>
+          <ul>
+            <li class="active contents" data-section="lesson">Lesson: Alphabet (A–Z)</li>
+            <li data-section="how" class="contents">How it works</li>
+            <li data-section="download" class="contents">Download / Export</li>
+            <li data-section="settings" class="contents">Settings</li>
+          </ul>
+        </nav>
+
+        <main class="content" id="ebookContent">
+
+          <!-- LESSON -->
+          <section id="lesson" class="card" aria-labelledby="lessonHeading">
+            <h2 id="lessonHeading">Alphabet Lesson — Try it</h2>
+
+            <div class="lesson-top" role="region" aria-label="Interactive letter">
+              <div class="letter-box" id="letterBox" aria-live="polite">A</div>
+
+              <div class="lesson-info">
+                <div class="input-row" role="form" aria-label="Letter input form">
+                  <input id="letterInput" type="text" maxlength="1" inputmode="text" aria-label="Letter input" placeholder="Type a letter (A-Z)" />
+                  <button id="fetchBtn" title="Fetch media for this letter">Fetch</button>
+                  <button id="speakBtn" title="Pronounce letter">🔊 Speak</button>
+                  <button id="clearBtn" title="Clear">Clear</button>
+                </div>
+
+                <div class="controls">
+                  <label><input type="checkbox" id="useWikimedia" checked /> Use Wikimedia Commons (online)</label>
+                  <label><input type="checkbox" id="useCurated" /> Use curated local/hosted media when available</label>
+                  <label><input type="checkbox" id="autoSpeak" checked /> Auto-TTS fallback</label>
+                </div>
+
+                <div id="feedback" class="feedback" aria-live="polite"></div>
+
+                <div class="note">Type a single letter and press <strong>Fetch</strong>. Results will match the letter (A → example word like "apple"). Progress and scores are saved locally.</div>
+
+                <div class="stats" aria-hidden="false">
+                  <div class="stat-box">
+                    <div class="small">Visited letters</div>
+                    <div id="visitedList">—</div>
+                    <button id="resetProgress">Reset progress</button>
+                  </div>
+                  <div class="stat-box">
+                    <div class="small">Mini-game score</div>
+                    <div id="gameScore">Played: 0 • Correct: 0</div>
+                    <button id="resetGame">Reset game</button>
+                  </div>
+                </div>
+
+              </div>
+            </div>
+
+            <div class="media-row" aria-label="Media results">
+              <div class="media" id="imageCard">
+                <strong>Image</strong>
+                <div id="imageContainer" class="placeholder">No image yet</div>
+              </div>
+
+              <div class="media" id="audioCard">
+                <strong>Audio</strong>
+                <div id="audioContainer" class="placeholder">No audio yet</div>
+              </div>
+
+              <div class="media" id="videoCard">
+                <strong>Video</strong>
+                <div id="videoContainer" class="placeholder">No video yet</div>
+              </div>
+            </div>
+
+            <div class="card" id="examplesCard" style="margin-top:12px;">
+              <h3>Examples (developer)</h3>
+              <p class="note">The lesson uses a map of example words to improve search relevance. Extend or replace the curatedMedia map below with local file paths or hosted URLs for offline reliability (example provided).</p>
+              <pre id="exampleMap" aria-hidden="false"></pre>
+            </div>
+          </section>
+
+          <!-- HOW -->
+          <section id="how" class="card" style="display:none">
+            <h2>How it works</h2>
+            <ol>
+              <li>Input validation (only letters A–Z accepted).</li>
+              <li>Letter → example-word mapping (A → apple, ...).</li>
+              <li>Search Wikimedia Commons for images, audio and video using the example word (online).</li>
+              <li>If curated media is available (local/hosted) and enabled, it will be used first.</li>
+              <li>If no audio is available, Web Speech API (TTS) is used as fallback.</li>
+              <li>Visited letters and mini-game stats are stored in <code>localStorage</code>.</li>
+            </ol>
+          </section>
+
+          <!-- DOWNLOAD -->
+          <section id="download" class="card" style="display:none">
+            <h2>Download / Export</h2>
+            <p class="note">Save this single HTML file or use Print → Save as PDF for an offline copy. If you use curated media (local files), package those media files alongside this HTML.</p>
+            <button class="print-btn" id="printBtn">Print / Save as PDF</button>
+          </section>
+
+          <!-- SETTINGS -->
+          <section id="settings" class="card" style="display:none">
+            <h2>Settings</h2>
+            <p class="note">Toggle behaviors. Curated media is best for packaging the e-book with local files.</p>
+            <label style="display:block;margin-top:8px"><input type="checkbox" id="persistEnabled" checked /> Persist progress in localStorage</label>
+          </section>
+
+             <!-- MINI-GAME -->
+          <section id="game" class="card" aria-labelledby="gameHeading">
+            <h3 id="gameHeading">Mini-game — Match the sound to the letter</h3>
+            <p class="note">Press <strong>Start Round</strong> to play: the lesson will play a letter sound (curated audio if available, otherwise TTS). Choose the correct letter among the choices.</p>
+
+            <div style="display:flex;gap:12px;align-items:center;flex-wrap:wrap;margin-top:8px">
+              <button id="startRound" class="print-btn">Start Round</button>
+              <button id="playAgain" class="print-btn" disabled>Play Sound</button>
+              <div id="roundFeedback" style="margin-left:8px;"></div>
+            </div>
+
+            <div class="game-opts" id="gameOptions" aria-live="polite" style="margin-top:12px"></div>
+            <div id="gameNote" class="note" style="margin-top:8px">Score is saved locally so you can continue later.</div>
+          </section>
+
+          <footer>Made with 💙 by Learngram — responsive alphabet lesson.</footer>
+          <a href="index.html">Back to Home</a>
+        </main>
+      </div>
+    </div>
+  </div>
+
+  <script src="learngram_JS/aphabet.js"></script>
+</body>
+</html>

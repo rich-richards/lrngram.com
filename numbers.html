@@ -1,0 +1,144 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Numbers lesson</title>
+  <meta name="description" content="Learngram Chapter 2: Numbers. Type a number (0–100) or click the list to fetch matching image, sound and video examples from Wikimedia Commons. Includes TTS fallback and input validation." />
+  <link rel="stylesheet" href="learngram_CSS/number.css">
+</head>
+<body>
+  <div class="container" role="main">
+    <header>
+      <div class="logo">LG</div>
+      <div class="title">
+        <h1>Lesson 2: Numbers</h1>
+        <p class="lead">Type any number (0–100) or click a number below to fetch matching image, sound and video (Wikimedia). TTS fallback included and a mini-game.</p>
+      </div>
+    </header>
+
+    <div class="ebook">
+      <div class="columns">
+        <nav aria-label="Contents">
+          <h3>Contents</h3>
+          <ul>
+            <li class="active contents" data-section="lesson">Lesson: Numbers (0–100)</li>
+            <li data-section="how" class="contents">How it works</li>
+            <li data-section="download" class="contents">Download / Export</li>
+            <li data-section="settings" class="contents">Settings</li>
+          </ul>
+        </nav>
+
+        <main class="content">
+          <!-- LESSON -->
+          <section id="lesson" class="card" aria-labelledby="lessonHeading">
+            <h2 id="lessonHeading">Numbers Lesson — Try it</h2>
+
+            <div class="lesson-top">
+              <div class="number-box" id="numberBox" aria-live="polite">0</div>
+
+              <div class="lesson-info">
+                <div class="input-row" role="form">
+                  <input id="numberInput" type="number" min="0" max="100" placeholder="0 - 100" aria-label="Number input" />
+                  <button id="fetchBtn" title="Fetch media for this number">Fetch</button>
+                  <button id="speakBtn" title="Pronounce number">🔊 Speak</button>
+                  <button id="clearBtn" title="Clear">Clear</button>
+                </div>
+
+                <div class="controls">
+                  <label><input type="checkbox" id="useWikimedia" checked /> Use Wikimedia Commons</label>
+                  <label><input type="checkbox" id="autoSpeak" checked /> Auto-TTS fallback</label>
+                </div>
+
+                <div id="feedback" class="feedback" aria-live="polite"></div>
+
+                <div class="note">Only whole numbers (0–100) are accepted. The number you type will be converted to English words for searching (for example: 12 → "twelve").</div>
+              </div>
+            </div>
+
+            <div class="number-list" id="numberListWrapper" aria-label="Number list or table">
+              <!-- We'll create either a table or a responsive grid depending on width -->
+              <div id="tableContainer"></div>
+            </div>
+
+            <div class="media-row" aria-label="Media results">
+              <div class="media" id="imageCard">
+                <strong>Image</strong>
+                <div id="imageContainer" class="placeholder">No image yet</div>
+              </div>
+
+              <div class="media" id="audioCard">
+                <strong>Audio</strong>
+                <div id="audioContainer" class="placeholder">No audio yet</div>
+              </div>
+
+              <div class="media" id="videoCard">
+                <strong>Video</strong>
+                <div id="videoContainer" class="placeholder">No video yet</div>
+              </div>
+            </div>
+
+            <div class="card" style="margin-top:12px">
+              <h3>Notes</h3>
+              <p class="note">If you plan to make this available offline, replace the wiki fetch with a curated map of local/hosted media and toggle <strong>Use Wikimedia Commons</strong> off.</p>
+              <pre id="exampleMap">Search terms = numberToWords(n)</pre>
+            </div>
+          </section>
+
+          <!-- HOW -->
+          <section id="how" class="card" style="display:none">
+            <h2>How it works</h2>
+            <ol>
+              <li>Input validation: only integers 0–100 accepted.</li>
+              <li>Convert number → English words for searching (e.g., 45 → "forty five").</li>
+              <li>Search Wikimedia Commons for images, audio, video matching the word.</li>
+              <li>If no audio found, use Web Speech API (TTS) fallback to speak the number and word.</li>
+            </ol>
+          </section>
+
+          <!-- DOWNLOAD -->
+          <section id="download" class="card" style="display:none">
+            <h2>Download / Export</h2>
+            <p class="note">Save this page as HTML and optionally package curated media files for full offline use. Use your browser Print → Save as PDF for a printable copy.</p>
+            <button class="print-btn" id="printBtn">Print / Save as PDF</button>
+          </section>
+
+          <!-- SETTINGS -->
+          <section id="settings" class="card" style="display:none">
+            <h2>Settings</h2>
+            <p class="note">Currently supports online Wikimedia fetch and TTS fallback. Replace or extend with curated media for offline reliability.</p>
+          </section>
+          
+          <!-- GAMIFIED CHALLENGE SECTION -->
+          <section id="numberGames" class="card" aria-labelledby="gamesHeading">
+            <h3 id="gamesHeading">Mini-game- Number Challenge</h3>
+            <p class="note">Guess the number or listen and select the number! Earn points and beat the timer.</p>
+
+            <div id="gameContainer">
+            <div class="game-header" style="display:flex;justify-content:space-between;align-items:center;margin-bottom:12px">
+            <div>Score: <span id="gameScore">0</span></div>
+            <div>Time left: <span id="gameTimer">30</span>s</div>
+            </div>
+
+            <div id="gameQuestion" style="font-size:20px;margin-bottom:12px"></div>
+            <div id="gameChoices" style="display:flex;gap:12px;flex-wrap:wrap;margin-bottom:12px"></div>
+            <div id="gameFeedback" style="min-height:22px;font-size:14px;color:#555;margin-bottom:12px"></div>
+
+            <div>
+            <button id="startGameBtn">Start Game</button>
+            <button id="resetGameBtn">Reset</button>
+            </div>
+            </div>
+          </section>
+          <footer style="margin-top:12px;color:var(--muted)">Made with 💙 by Learngram — responsive numbers lesson.</footer>
+          <a href="index.html">Back to home</a>
+        </main>
+      </div>
+    </div>
+  </div>
+
+  
+
+  <script src="learngram_JS/numbers.js"></script>
+</body>
+</html>

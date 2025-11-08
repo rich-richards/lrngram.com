@@ -1,0 +1,129 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title> Verbs lesson</title>
+<meta name="description" content="Learngram Verbs Lesson — type a verb, view present/past/future forms and fetch matching video/image/audio from Wikimedia Commons. TTS fallback included." />
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="learngram_CSS/verbs.css">
+</head>
+<body>
+  <div class="container" role="main">
+    <header>
+      <div class="logo">LG</div>
+      <div class="title">
+        <h1>Lesson 4: Verbs</h1>
+        <p class="lead">Type a verb; see Present / Past / Future forms and fetch matching video, image and audio. TTS fallback included.</p>
+      </div>
+    </header>
+
+    <div class="ebook" role="article" aria-labelledby="lessonHeading">
+      <div class="layout">
+        <nav aria-label="Contents">
+          <h3>Contents</h3>
+          <ul>
+            <li class="active" data-section="lesson">Lesson: Verbs</li>
+            <li data-section="how">How it works</li>
+            <li data-section="download">Download / Export</li>
+            <li data-section="settings">Settings</li>
+
+          </ul>
+        </nav>
+
+        <main>
+          <!-- Lesson card -->
+          <section id="lesson" class="card">
+            <h2 id="lessonHeading">Verb Lesson — Try it</h2>
+
+            <div class="top-row">
+              <div class="verb-box" id="verbBox" aria-live="polite">run</div>
+
+              <div class="controls">
+                <div class="input-row" role="form" aria-label="Verb input form">
+                  <input id="verbInput" type="text" placeholder="Type a verb (e.g., run, eat)" aria-label="Verb input" />
+                  <button id="fetchBtn" class="btn" title="Fetch media">Fetch</button>
+                  <button id="speakBtn" class="btn" title="Speak sentence">🔊 Speak</button>
+                  <button id="clearBtn" class="btn ghost" title="Clear">Clear</button>
+                </div>
+
+                <div class="note">Only a single alphabetic verb is accepted. The app validates the word and searches forms (base, present, past, future) for relevant media.</div>
+
+                <div class="status" id="status" aria-live="polite"></div>
+
+                <div class="tenses" id="tenses">
+                  <div class="tense" id="present">Present: —</div>
+                  <div class="tense" id="past">Past: —</div>
+                  <div class="tense" id="future">Future: —</div>
+                </div>
+              </div>
+            </div>
+
+            <div class="card" style="margin-top:12px">
+              <h3>Basic verbs — click to load</h3>
+              <div id="examples" class="example-list" aria-label="Example verbs"></div>
+            </div>
+
+            <div class="media-grid" aria-live="polite">
+              <div class="media">
+                <strong>Image</strong>
+                <div id="imageContainer" class="placeholder">No image yet</div>
+              </div>
+
+              <div class="media">
+                <strong>Audio</strong>
+                <div id="audioContainer" class="placeholder">No audio yet</div>
+              </div>
+
+              <div class="media">
+                <strong>Video / GIF</strong>
+                <div id="videoContainer" class="placeholder">No video yet</div>
+              </div>
+            </div>
+          </section>
+
+          <!-- How it works -->
+          <section id="how" class="card" style="display:none">
+            <h2>How it works</h2>
+            <ol>
+              <li>Validation: single-word alphabetic verbs only. The app checks the dictionary to confirm it's a verb.</li>
+              <li>Converts verb to useful search forms: base, -ing, past (irregular if known), "verb action".</li>
+              <li>Searches Wikimedia Commons for video first (best to visualize action), then images and audio. If no audio found, browser TTS speaks an example.</li>
+            </ol>
+          </section>
+
+          <!-- DOWNLOAD -->
+          <section id="download" class="card" style="display:none">
+            <h2>Download / Export</h2>
+            <p class="note">Save this HTML file and, if desired, host curated media locally and change the fetch map for offline use.</p>
+            <button class="print-btn" id="printBtn">Print / Save as PDF</button>
+          </section>
+
+          <!-- SETTINGS -->
+          <section id="settings" class="card" style="display:none">
+            <h2>Settings</h2>
+            <p class="note">Currently supports online Wikimedia fetch and TTS fallback. Replace or extend with curated media for offline reliability.</p>
+          </section>
+
+           <!-- MINI-GAME -->
+          <div class="game-card">
+            <h3 id="gamesHeading">🎮 Mini Game: Guess the Tense!</h3>
+            <p id="gameQuestion">Press “Start Game”</p>
+            <div>
+            <button class="option-btn" data-t="present">Present</button>
+            <button class="option-btn" data-t="past">Past</button>
+            <button class="option-btn" data-t="future">Future</button>
+            </div>
+            <p id="scoreBox">Score: 0</p>
+            <button id="nextBtn">Start Game</button>
+          </div>
+          <footer style="margin-top:12px;color:var(--muted)">Made with 💙 by Learngram — responsive verbs lesson.</footer>
+          <a href="index.html">Back to home</a>
+        </main>
+      </div>
+    </div>
+  </div>
+
+<script src="learngram_JS/verbs.js"></script>
+</body>
+</html>
