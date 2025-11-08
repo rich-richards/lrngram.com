@@ -1,0 +1,154 @@
+:root{
+    --page-bg:#f2f4f8; --panel:#ffffff; --blue:#2b9be4; --blue-dark:#1f78be; --text:#102027; --muted:#6b7280; --radius:14px; --max-w:1150px;
+  }
+  *{box-sizing:border-box}
+  html,body{height:100%}
+  body{
+    margin:0;font-family:'Roboto',sans-serif;background:var(--page-bg);color:var(--text);
+    -webkit-font-smoothing:antialiased;display:flex;justify-content:center;padding:20px;
+  }
+  .container{width:100%;max-width:var(--max-w)}
+  header{
+    background:linear-gradient(90deg,var(--blue),var(--blue-dark));color:white;padding:18px;border-radius:var(--radius);display:flex;gap:12px;align-items:center;margin-bottom:14px;box-shadow:0 10px 30px rgba(31,120,190,0.13)
+  }
+.logo {
+  width: clamp(48px, 10vw, 78px);
+  height: clamp(48px, 10vw, 78px);
+  border-radius: 10px;
+  background: rgba(255, 255, 255, 0.12);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  font-size: clamp(16px, 3vw, 22px);
+  transition: all 0.3s ease;
+}
+  header .title{display:flex;flex-direction:column}
+  header h1{margin:0;font-size:18px}
+  header p.lead{margin:6px 0 0;font-size:13px;color:rgba(255,255,255,0.95)}
+  .ebook{background:var(--panel);border-radius:var(--radius);padding:14px;margin-bottom:16px;box-shadow:0 8px 24px rgba(23,31,42,0.04)}
+  .layout{display:grid;grid-template-columns:320px 1fr;gap:16px;align-items:start}
+  nav{background:#fbfdff;border-radius:12px;padding:12px;border:1px solid rgba(16,24,40,0.03)}
+  nav h3{margin:0 0 10px 0;font-size:15px}
+
+  .examples{display:flex;flex-direction:column;gap:8px}
+  .example-item{padding:8px 10px;border-radius:10px;background:#fff;border:1px solid rgba(16,24,40,0.1);cursor:pointer;font-weight:700;text-align:center}
+
+  .example-item:hover{background:linear-gradient(90deg,rgba(59,130,246,0.06),rgba(30,64,175,0.06))}
+  main{padding:6px 0}
+  .card{background:var(--panel);border-radius:12px;padding:14px;border:1px solid rgba(16,24,40,0.03)}
+
+  h2  {color: #1e90ff;}
+     a {
+      color: hsl(210, 100%, 56%);
+      text-decoration: none;
+      font-size: 16px;
+    }
+
+  #sendBtn:hover {background: hsl(210, 100%, 56%);}
+  #sendBtn:active {background: hsl(210, 100%, 38%);}
+  #voiceBtn:hover {background: hsl(210, 100%, 56%);}
+  #voiceBtn:active {background: hsl(210, 100%, 38%);}
+  
+  .chat-window{height:420px;border-radius:10px;overflow:auto;padding:12px;background:linear-gradient(180deg,#fcfeff,#f7fbff);border:1px solid rgba(16,24,40,0.1)}
+  .msg{max-width:78%;margin:8px 0;padding:10px 12px;border-radius:12px;line-height:1.3;word-break:break-word}
+  .msg.user{margin-left:auto;background:linear-gradient(90deg,var(--blue),var(--blue-dark));color:white;border-bottom-right-radius:4px}
+  .msg.bot{background: linear-gradient(90deg, var(--page-bg), var(--panel));color:var(--text);border:1px solid rgba(16,24,40,0.2)}
+  .msg meta{display:block;font-size:12px;color:var(--muted);margin-top:8px}
+  .composer{display:flex;gap:8px;margin-top:12px;align-items:center}
+  .composer input[type=text]{flex:1;padding:10px 12px;border-radius:10px;border:1px solid rgba(16,24,40,0.1);font-size:15px;background:#fff}
+  .btn{background:linear-gradient(90deg,var(--blue),var(--blue-dark));color:white;border:0;padding:10px 14px;border-radius:10px;cursor:pointer;font-weight:700}
+  .btn .ghost {background:#fff;color:var(--text);border:1px solid rgba(16,24,40,0.06)}
+  .controls{display:flex;gap:8px;align-items:center;margin-top:12px;flex-wrap:wrap}
+  .status{font-size:13px;color:var(--muted)}
+  .status.error{color: red}
+  .status.success{color:rgb(0, 255, 0)}
+  .media-row{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:12px}
+  .media{background:#fbfdff;padding:10px;border-radius:10px;min-height:100px;border:1px solid rgba(16,24,40,0.1)}
+  .media strong{display:block;color:var(--text)}
+  .placeholder{font-size:13px;color:var(--muted)}
+  img,video,audio{width:100%;border-radius:8px;max-height:220px;object-fit:cover}
+  .examples-table{margin-top:12px;padding:8px;border-radius:8px;background:#fff;border:1px solid rgba(16,24,40,0.1)}
+
+ #clearHistory:hover {background: hsl(210, 100%, 56%);}
+ #clearHistory:active {background: hsl(210, 100%, 38%);}
+
+/* Mini-game styles (prefixed mg_) */
+#h1 {color: #1e90ff; margin-top: 13px; font-size: 1.17em;}
+
+.chat-window {
+  height: 400px;
+  overflow-y: auto;
+  border: 1px solid rgba(16,24,40,0.08);
+  border-radius: 10px;
+  background: linear-gradient(180deg,#fdfdfe,#f7fbff);
+  padding: 10px;
+}
+.msg {
+  margin: 8px 0;
+  padding: 10px 12px;
+  border-radius: 12px;
+  max-width: 78%;
+  line-height: 1.4;
+}
+
+.Bot {    background-color: #e8f1ff; align-self: flex-start;}
+.User {   background-color: #9bcdf4;align-self: flex-end; text-align: right; margin-left:auto;}
+
+.composer {
+  display:flex;
+  gap:8px;
+  margin-top:10px;
+}
+input[type=text] {
+  flex:1;
+  padding:10px 12px;
+  border-radius:10px;
+  border:1px solid rgba(16,24,40,0.1);
+  font-size:15px;
+}
+button {
+  border:0;
+  border-radius:10px;
+  padding:10px 14px;
+  cursor:pointer;
+  font-weight:700;
+}
+
+.score {
+    text-align: center;
+    margin-top: 10px;
+    color: #007bff;
+    font-weight: bold;
+}
+
+.p1 {font-weight: 700; font-size: 18px;}
+
+#send_Btn {background: linear-gradient(90deg,var(--blue),var(--blue-dark)); color: white;}
+#send_Btn:hover {background: hsl(210, 100%, 56%);}
+#send_Btn:active {background: hsl(210, 100%, 38%);}
+
+/* === RESPONSIVENESS === */
+@media (max-width: 980px) {
+  .layout { grid-template-columns: 1fr; }
+  .chat-window { height: clamp(260px, 45vh, 350px); }
+}
+
+@media (max-width: 720px) {
+  body { padding: 10px; }
+  header { flex-direction: column; text-align: center; }
+  .logo { width: 48px; height: 48px; font-size: 16px; }
+  .composer { flex-direction: column; align-items: stretch; }
+  button, .btn { width: 100%; }
+  nav { padding: 10px; }
+}
+
+@media (max-width: 480px) {
+  .chat-window { height: 260px; padding: 8px; }
+  .msg { max-width: 90%; font-size: 14px; }
+  .composer input { font-size: 13px; }
+  .score { font-size: 14px; }
+}
+
+
+

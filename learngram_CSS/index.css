@@ -1,0 +1,143 @@
+    /* General Reset */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Roboto', sans-serif;
+    }
+
+    body {
+      background-color: #f2f2f2; /* Light-gray background */
+      color: #ffffff;
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+    }
+
+    header {
+      background-color: #1e90ff; /* Light-blue */
+      padding: 1.5rem;
+      text-align: center;
+    }
+
+    header h1 {
+      font-size: 1.8rem;
+      margin-bottom: 0.5rem;
+    }
+
+    nav {
+      margin-top: 0.5rem;
+    }
+
+    nav a {
+      color: #ffffff;
+      margin: 0 1rem;
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    nav a:hover {
+      text-decoration: underline;
+    }
+
+    main {
+      flex: 1;
+      padding: 2rem;
+      display: flex;
+      flex-direction: column;
+      gap: 2rem;
+    }
+
+    section {
+      background-color: #ffffff;
+      padding: 1.5rem;
+      border-radius: 12px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+      color: #333;
+    }
+
+    section h2 {
+      color: #1e90ff;
+      margin-bottom: 1rem;
+      font-size: 1.5rem;
+    }
+
+    .js_link {
+      color: #1e90ff;
+      text-decoration: none;
+      margin-top: 3px;
+    }
+
+    .lessons, .games {
+      display: grid;
+      gap: 1rem;
+    }
+
+    .lesson, .game {
+      background-color: #f9f9f9;
+      border-radius: 10px;
+      padding: 1rem;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .lesson:hover, .game:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    }
+
+    button {
+      background-color: hsl(210, 100%, 56%);
+      color: #ffffff;
+      border: none;
+      padding: 0.7rem 1.2rem;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: 14px;
+      margin-top: 3px;
+      margin-bottom: 8px;
+    }
+
+    button:hover {
+      background-color: hsl(209, 100%, 46%);
+    }
+
+    button:active {
+      background-color: hsl(209, 100%, 36%);
+    }
+
+    footer {
+      background-color: #1e90ff;
+      color: #ffffff;
+      text-align: center;
+      padding: 1rem;
+      font-size: 0.9rem;
+    }
+
+    footer a {
+      color: #ffffff;
+      margin: 0 0.5rem;
+      text-decoration: none;
+    }
+
+    footer a:hover {
+      text-decoration: underline;
+    }
+
+    /* Responsive Design */
+    @media (max-width: 768px) {
+      main {
+        padding: 1rem;
+      }
+
+      header h1 {
+        font-size: 1.5rem;
+      }
+
+      nav a {
+        display: inline-block;
+        margin: 0.3rem;
+      }
+    }
