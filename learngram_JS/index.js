@@ -1,6 +1,7 @@
 const jsLink = document.querySelector(".js_link");
-const redMessage = document.querySelector(".redMessage");
+const jsLink2 = document.querySelector(".js_link2");
 
+console.log(jsLink2);
 
 
 
@@ -19,8 +20,11 @@ function showLink() {
 }
 
 
-function showNothing() {
-  redMessage.textContent = "Games will be available soon.";
+function showLink2() {
+  jsLink2.innerHTML = `
+  <div>
+  <a href='games-grid.html' class='js_link'>games-grid</a>
+  </div>`;
 }
 
 

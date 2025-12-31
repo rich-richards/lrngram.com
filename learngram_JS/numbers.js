@@ -166,10 +166,8 @@
       link.rel = 'noopener noreferrer';
       link.textContent = 'Search example videos on YouTube';
       link.style.display = 'inline-block';
-      link.style.padding = '8px 10px';
-      link.style.borderRadius = '8px';
-      link.style.background = 'linear-gradient(90deg,var(--blue),var(--blue-dark))';
-      link.style.color = '#fff';
+      link.style.color = '#1474e2';
+      link.style.fontSize = '16px';
       videoContainer.appendChild(link);
     }
 
@@ -338,17 +336,27 @@
       renderNumberList();
     });
 
-      // nav
-    navItems.forEach(li => {
-      li.addEventListener('click', () => {
-        navItems.forEach(x => x.classList.remove('active'));
-        li.classList.add('active');
-        const section = li.dataset.section;
-        document.querySelectorAll('main.content section.card').forEach(s => s.style.display = 'none');
-        const target = document.getElementById(section);
-        if(target) target.style.display = 'block';
-      });
-    });
+// nav (MODIFIED to keep #numberGames visible)
+navItems.forEach(li => {
+  li.addEventListener('click', () => {
+  navItems.forEach(x => x.classList.remove('active'));
+  li.classList.add('active');
+  const section = li.dataset.section;
+  // Hide all section.card elements EXCEPT the one with id 'numberGames'
+  document.querySelectorAll('main.content section.card').forEach(s => {
+   if (s.id !== 'numberGames') { // Check if the section is NOT the game section
+    s.style.display = 'none';
+   }
+  });
+
+  const target = document.getElementById(section);
+  if(target) target.style.display = 'block';
+        
+        // Ensure the game section is visible if it was hidden by some other initial logic
+        const gameSection = document.getElementById('numberGames');
+        if (gameSection) gameSection.style.display = 'block';
+  });
+});
 
   const startGameBtn = el('startGameBtn');
   const resetGameBtn = el('resetGameBtn');

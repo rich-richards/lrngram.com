@@ -202,7 +202,7 @@ async function doSearch(termArg){
       VIDEO_SLOT.innerHTML = `<video controls src="${vids[0].url}"></video>`;
     } else {
       const yt = `https://www.youtube.com/results?search_query=${encodeURIComponent(tryTerm + ' family')}`;
-      VIDEO_SLOT.innerHTML = `<div class="placeholder">No Commons video. <a href="${yt}" target="_blank" rel="noopener">Search YouTube</a></div>`;
+      VIDEO_SLOT.innerHTML = `<div class="placeholder">No Commons video. <a href="${yt}" target="_blank" rel="noopener" class="link">Search example videos on YouTube</a></div>`;
     }
 
     // status message about match

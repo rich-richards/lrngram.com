@@ -178,7 +178,7 @@ async function fetchMediaFor(term){
     if(auds && auds.length){ audioCard.innerHTML=''; const a=document.createElement('audio'); a.controls=true; a.src=auds[0].url; audioCard.appendChild(a); }
     else audioCard.innerHTML = '<div class="placeholder">No audio found.</div>';
     if(vids && vids.length){ videoCard.innerHTML=''; const v=document.createElement('video'); v.controls=true; v.src=vids[0].url; videoCard.appendChild(v); }
-    else videoCard.innerHTML = `<div class="placeholder">No video — try a YouTube search:<br><a target="_blank" href="https://www.youtube.com/results?search_query=${encodeURIComponent(term)}">search on YouTube</a></div>`;
+    else videoCard.innerHTML = `<div class="placeholder">No video — try a YouTube search:<br><a target="_blank" href="https://www.youtube.com/results?search_query=${encodeURIComponent(term)}" class='link'>search example videos on YouTube</a></div>`;
   }catch(e){
     console.warn('media error', e);
     imgCard.innerHTML = '<div class="placeholder">Media fetch error.</div>';
@@ -326,18 +326,27 @@ function speak(text){
 
 /* MINI-GAME CODE */
 
- const chatBox = document.getElementById("chatBox");
+// ----------------------- DOM Shortcuts and Variables -----------------------
+/* MINI-GAME CODE */
+
+// ----------------------- DOM Shortcuts and Variables -----------------------
+  const chatBox = document.getElementById("chatBox");
   const UserInput = document.getElementById("UserInput");
   const SendBtn = document.getElementById("SendBtn");
   const scoreDisplay = document.getElementById("scoreDisplay");
   const timerDisplay = document.getElementById("timer");
+  const StartBtn = document.getElementById("StartBtn");
+  const RestartBtn = document.getElementById("RestartBtn");
+  const startScreen = document.getElementById("startScreen");
+  const restartScreen = document.getElementById("restartScreen");
+  const inputArea = document.getElementById("inputArea"); // New reference for input div
 
   let score = 0;
   let step = 0;
   let userData = {};
   let timeLeft = 30;
-  let timer;
-  let gameActive = true;
+  let timer = null; // Initialize timer to null
+  let gameActive = false; // Game starts as inactive
 
   const questions = [
     "What's your name?",
@@ -348,6 +357,8 @@ function speak(text){
     "Can you share your email or phone number?",
   ];
 
+  // ----------------------- Game Utility Functions -----------------------
+
   function addMessage(text, sender) {
     const msg = document.createElement("div");
     msg.classList.add("chat-message", sender);
@@ -357,20 +368,13 @@ function speak(text){
   }
 
   function startTimer() {
+    timerDisplay.textContent = `Time Left: ${timeLeft}s`;
     timer = setInterval(() => {
       if (!gameActive) return;
       timeLeft--;
       timerDisplay.textContent = `Time Left: ${timeLeft}s`;
       if (timeLeft <= 0) endGame();
     }, 1000);
-  }
-
-  function endGame() {
-    gameActive = false;
-    clearInterval(timer);
-    UserInput.disabled = true;
-    SendBtn.disabled = true;
-    addMessage(`⏰ Time’s up! Your final score is ${score}.`, "bot");
   }
 
   function checkGrammarAndSpelling(input) {
@@ -383,47 +387,106 @@ function speak(text){
 
   async function fetchAIReply(input) {
     const responses = {
-      name: `Nice to meet you, ${input.split(" ")[0]}!`,
-      age: `Oh, ${input}? You seem young and energetic!`,
-      nationality: `That's great! I love people from ${input}.`,
-      occupation: `${input}? Sounds like a great job!`,
-      hobby: `Wow, ${input} sounds fun!`,
-      contact: `Got it! Thanks for sharing your contact info.`,
+      0: `Nice to meet you, ${input.split(" ")[0]}!`,
+      1: `Oh, ${input}? You seem young and energetic!`,
+      2: `That's great! I love people from ${input}.`,
+      3: `${input}? Sounds like a great job!`,
+      4: `Wow, ${input} sounds fun!`,
+      5: `Got it! Thanks for sharing your contact info.`,
     };
-
-    const keys = Object.keys(responses);
-    return responses[keys[step]] || "That's interesting!";
+    // Use the current step directly as the key
+    return responses[step] || "That's interesting!";
   }
 
-  SendBtn.addEventListener("click", async () => {
+  // ----------------------- Game Flow Functions -----------------------
+
+  function startGame() {
+    // Reset state
+    score = 0;
+    step = 0;
+    timeLeft = 30;
+    userData = {};
+    clearInterval(timer);
+    timer = null;
+    chatBox.innerHTML = '';
+    UserInput.value = '';
+    UserInput.disabled = false;
+    SendBtn.disabled = false;
+    scoreDisplay.textContent = `Score: 0`;
+    timerDisplay.textContent = `Time Left: 30s`;
+
+    // Toggle visibility
+    startScreen.style.display = 'none';
+    restartScreen.style.display = 'none';
+    inputArea.style.display = 'flex'; 
+
+    gameActive = true;
+
+    // Initial message and start the flow
+    addMessage(`👋 Hi! Let’s practice sharing personal information. ${questions[step]}`, "bot");
+  }
+
+  function endGame() {
+    gameActive = false;
+    clearInterval(timer);
+    timer = null;
+    UserInput.disabled = true;
+    SendBtn.disabled = true;
+    inputArea.style.display = 'none'; // Hide input area
+
+    addMessage(`⏰ Time’s up! Your final score is ${score}.`, "bot");
+    restartScreen.style.display = 'block'; // Show restart button
+  }
+
+  // ----------------------- Mini-Game Send Handler (NEW FUNCTION) -----------------------
+
+  async function handleMiniGameSend() {
     if (!gameActive) return;
     const input = UserInput.value.trim();
     if (!input) return alert("Please type something!");
     addMessage(input, "user");
     UserInput.value = "";
 
-    if (step === 0 && !timer) startTimer(); // Start timer on first message
+    if (step === 0 && timer === null) startTimer(); // Start timer on first message
 
     const points = checkGrammarAndSpelling(input);
     score += points;
     scoreDisplay.textContent = `Score: ${score}`;
 
+    // Fetch AI reply based on the *current* step (before incrementing)
     const aiReply = await fetchAIReply(input);
     addMessage(aiReply, "bot");
 
-    if (step === 0) userData.name = input;
-    if (step === 1) userData.age = input;
-    if (step === 2) userData.nationality = input;
-    if (step === 3) userData.occupation = input;
-    if (step === 4) userData.hobby = input;
-    if (step === 5) userData.contact = input;
+    // Store user data after the reply is sent
+    if (step === 0) userData.name = input.split(" ")[0]; // Store only first name
+    else if (step === 1) userData.age = input;
+    else if (step === 2) userData.nationality = input;
+    else if (step === 3) userData.occupation = input;
+    else if (step === 4) userData.hobby = input;
+    else if (step === 5) userData.contact = input;
 
     step++;
+
+    // Check for next question or game end
     if (step < questions.length && gameActive) {
       setTimeout(() => addMessage(questions[step], "bot"), 1000);
     } else if (step >= questions.length && gameActive) {
       addMessage(`🎉 Great job ${userData.name || "friend"}! You’ve finished the chat. Your final score is ${score}.`, "bot");
       clearInterval(timer);
       gameActive = false;
+      inputArea.style.display = 'none';
+      restartScreen.style.display = 'block';
+    }
+  }
+
+  // ----------------------- Bind Listeners (Mini-Game Specific) -----------------------
+  SendBtn.addEventListener("click", handleMiniGameSend); // Binds to the new function
+  UserInput.addEventListener("keydown", (e) => {
+    if (e.key === "Enter") {
+      e.preventDefault();
+      handleMiniGameSend(); // Binds to the new function
     }
   });
+
+  StartBtn.addEventListener("click", startGame);
+  RestartBtn.addEventListener("click", startGame);

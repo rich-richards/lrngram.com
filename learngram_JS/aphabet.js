@@ -194,8 +194,8 @@
       const link = document.createElement('a');
       link.href = `https://www.youtube.com/results?search_query=${encodeURIComponent(fallbackQuery)}`;
       link.target = '_blank'; link.rel = 'noopener noreferrer'; link.textContent = 'Search example videos on YouTube';
-      link.style.display='inline-block'; link.style.padding='8px 10px'; link.style.borderRadius='8px';
-      link.style.background='linear-gradient(90deg,var(--blue),var(--blue-dark))'; link.style.color='#fff';
+      link.style.display='inline-block';
+      link.style.color='#1474e2';
       videoContainer.appendChild(link);
     }
 
@@ -308,16 +308,52 @@
     printBtn && printBtn.addEventListener('click', () => window.print());
 
     // nav
-    navItems.forEach(li => {
-      li.addEventListener('click', () => {
-        navItems.forEach(x => x.classList.remove('active'));
-        li.classList.add('active');
-        const section = li.dataset.section;
-        document.querySelectorAll('main.content section.card').forEach(s => s.style.display = 'none');
-        const target = document.getElementById(section);
-        if(target) target.style.display = 'block';
-      });
+ // Original nav logic to modify
+navItems.forEach(li => {
+  li.addEventListener('click', () => {
+    // 1. Remove 'active' class from all nav items
+    navItems.forEach(x => x.classList.remove('active'));
+    
+    // 2. Add 'active' class to the clicked item
+    li.classList.add('active');
+    
+    const section = li.dataset.section;
+
+    // 3. HIDE ALL sections, *EXCEPT* the mini-game section ('#game')
+    document.querySelectorAll('main.content section.card').forEach(s => {
+        // Only hide the section if its ID is NOT 'game'
+        if (s.id !== 'game') { 
+            s.style.display = 'none';
+        }
     });
+
+    // 4. SHOW the target section (which could be the 'lesson' or 'how', etc.)
+    const target = document.getElementById(section);
+    if(target) target.style.display = 'block';
+
+    // 5. Ensure the Mini-Game section is always visible
+    const gameSection = document.getElementById('game');
+    if (gameSection) {
+        gameSection.style.display = 'block';
+    }
+  });
+});
+
+// We also need to fix the initial load of sections.
+// When the page loads, only the active section and the game should be visible.
+
+// Add this function call at the end of the script to ensure correct initial state
+document.addEventListener('DOMContentLoaded', () => {
+    // Hide all sections initially (except the one marked 'active' in HTML/CSS)
+    document.querySelectorAll('main.content section.card').forEach(s => {
+        // Assuming 'lesson' is the default active section
+        if (s.id !== 'lesson' && s.id !== 'game') {
+            s.style.display = 'none';
+        } else {
+            s.style.display = 'block';
+        }
+    });
+});
 
     // ---------------- MINI-GAME: Match the sound to the letter
     // Game state

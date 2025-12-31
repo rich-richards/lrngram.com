@@ -1,143 +1,163 @@
-    /* General Reset */
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-      font-family: 'Roboto', sans-serif;
-    }
+:root {
+  --page-bg: #f2f4f8;   /* light-gray page background */
+  --panel: #ffffff;     /* white panels */
+  --blue: #3498db;      /* primary blue */
+  --blue-dark: #217dbb; /* darker blue */
+  --btn-blue: #1474e2;  /* button blue */
+  --text: #0f1724;      /* dark text on panels */
+  --muted: #6b7280;
+  --radius: 10px;
+  --max-w: 1100px;
+}
 
-    body {
-      background-color: #f2f2f2; /* Light-gray background */
-      color: #ffffff;
-      display: flex;
-      flex-direction: column;
-      min-height: 100vh;
-    }
+/* General Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Roboto', sans-serif;
+}
 
-    header {
-      background-color: #1e90ff; /* Light-blue */
-      padding: 1.5rem;
-      text-align: center;
-    }
+body {
+  background-color: var(--page-bg);
+  color: var(--text);
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
 
-    header h1 {
-      font-size: 1.8rem;
-      margin-bottom: 0.5rem;
-    }
+header {
+  background-color: var(--blue);
+  padding: 1.5rem;
+  text-align: center;
+  color: #ffffff; /* Keep white text on blue background */
+}
 
-    nav {
-      margin-top: 0.5rem;
-    }
+header h1 {
+  font-size: 1.8rem;
+  margin-bottom: 0.5rem;
+}
 
-    nav a {
-      color: #ffffff;
-      margin: 0 1rem;
-      text-decoration: none;
-      font-weight: bold;
-    }
+nav {
+  margin-top: 0.5rem;
+}
 
-    nav a:hover {
-      text-decoration: underline;
-    }
+nav a {
+  color: #ffffff;
+  margin: 0 1rem;
+  text-decoration: none;
+  font-weight: bold;
+}
 
-    main {
-      flex: 1;
-      padding: 2rem;
-      display: flex;
-      flex-direction: column;
-      gap: 2rem;
-    }
+nav a:hover {
+  text-decoration: underline;
+}
 
-    section {
-      background-color: #ffffff;
-      padding: 1.5rem;
-      border-radius: 12px;
-      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-      color: #333;
-    }
+main {
+  flex: 1;
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  
+  /* Center the content and limit width based on variables */
+  width: 100%;
+  max-width: var(--max-w);
+  margin: 0 auto;
+}
 
-    section h2 {
-      color: #1e90ff;
-      margin-bottom: 1rem;
-      font-size: 1.5rem;
-    }
+section {
+  background-color: var(--panel);
+  padding: 1.5rem;
+  border-radius: var(--radius);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05); /* Softened shadow */
+  color: var(--text);
+}
 
-    .js_link {
-      color: #1e90ff;
-      text-decoration: none;
-      margin-top: 3px;
-    }
+section h2 {
+  color: var(--blue-dark); /* Used darker blue for contrast */
+  margin-bottom: 1rem;
+  font-size: 1.5rem;
+}
 
-    .lessons, .games {
-      display: grid;
-      gap: 1rem;
-    }
+.js_link {
+  color: var(--btn-blue);
+  text-decoration: none;
+  margin-top: 3px;
+  display: inline-block;
+}
 
-    .lesson, .game {
-      background-color: #f9f9f9;
-      border-radius: 10px;
-      padding: 1rem;
-      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
-    }
+.lessons, .games {
+  display: grid;
+  gap: 1rem;
+}
 
-    .lesson:hover, .game:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-    }
+.lesson, .game {
+  /* Using page-bg here provides subtle contrast against the white panel */
+  background-color: var(--page-bg); 
+  border-radius: var(--radius);
+  padding: 1rem;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.03);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
 
-    button {
-      background-color: hsl(210, 100%, 56%);
-      color: #ffffff;
-      border: none;
-      padding: 0.7rem 1.2rem;
-      border-radius: 8px;
-      cursor: pointer;
-      transition: background-color 0.3s ease;
-      font-family: Arial, Helvetica, sans-serif;
-      font-size: 14px;
-      margin-top: 3px;
-      margin-bottom: 8px;
-    }
+.lesson:hover, .game:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
 
-    button:hover {
-      background-color: hsl(209, 100%, 46%);
-    }
+button {
+  background-color: var(--btn-blue);
+  color: #ffffff;
+  border: none;
+  padding: 0.7rem 1.2rem;
+  border-radius: var(--radius); /* Matches theme radius */
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 14px;
+  margin-top: 3px;
+  margin-bottom: 8px;
+}
 
-    button:active {
-      background-color: hsl(209, 100%, 36%);
-    }
+button:hover {
+  background-color: hsl(234, 100%, 50%);
+}
 
-    footer {
-      background-color: #1e90ff;
-      color: #ffffff;
-      text-align: center;
-      padding: 1rem;
-      font-size: 0.9rem;
-    }
+button:active {
+  background-color: hsl(234, 100%, 30%);
+}
 
-    footer a {
-      color: #ffffff;
-      margin: 0 0.5rem;
-      text-decoration: none;
-    }
+footer {
+  background-color: var(--blue-dark);
+  color: #ffffff;
+  text-align: center;
+  padding: 1rem;
+  font-size: 0.9rem;
+}
 
-    footer a:hover {
-      text-decoration: underline;
-    }
+footer a {
+  color: #ffffff;
+  margin: 0 0.5rem;
+  text-decoration: none;
+}
 
-    /* Responsive Design */
-    @media (max-width: 768px) {
-      main {
-        padding: 1rem;
-      }
+footer a:hover {
+  text-decoration: underline;
+}
 
-      header h1 {
-        font-size: 1.5rem;
-      }
+/* Responsive Design */
+@media (max-width: 768px) {
+  main {
+    padding: 1rem;
+  }
 
-      nav a {
-        display: inline-block;
-        margin: 0.3rem;
-      }
-    }
+  header h1 {
+    font-size: 1.5rem;
+  }
+
+  nav a {
+    display: inline-block;
+    margin: 0.3rem;
+  }
+}

@@ -163,8 +163,8 @@ function renderMedia(imgs, auds, vids, fallback){
   videoContainer.innerHTML = '';
   if(vids && vids.length>0){ const v = document.createElement('video'); v.controls=true; v.src = vids[0].url; v.style.maxHeight='220px'; videoContainer.appendChild(v); }
   else {
-    const link = document.createElement('a'); link.href = `https://www.youtube.com/results?search_query=${encodeURIComponent(fallback)}`; link.target='_blank'; link.rel='noopener noreferrer'; link.textContent='Search videos on YouTube';
-    link.style.display='inline-block'; link.style.padding='8px 10px'; link.style.borderRadius='8px'; link.style.background='linear-gradient(90deg,var(--blue),var(--blue-dark))'; link.style.color='#fff';
+    const link = document.createElement('a'); link.href = `https://www.youtube.com/results?search_query=${encodeURIComponent(fallback)}`; link.target='_blank'; link.rel='noopener noreferrer'; link.textContent='Search example videos on YouTube';
+    link.style.display='inline-block'; link.style.color='#1474e2'; link.style.fontSize='16px';
     videoContainer.appendChild(link);
   }
 }
