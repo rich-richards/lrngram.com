@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Learn's Alphabet Adventure</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+
+    <link rel="stylesheet" href="learngram_CSS/Learn's-Alphabet-adventure.css">
+</head>
+<body>
+    
+    <audio id="music" loop src="audio/bg_music.mp3" preload="auto"></audio>
+
+    <div id="assets">
+        <img id="img-learn" src="images/Learn.png" alt="Learn Character">
+        <img id="img-bg" src="images/Garden.png" alt="Garden Background">
+    </div>
+
+    <div id="game-wrapper">
+        <canvas id="gameCanvas"></canvas>
+        <div id="block-container"></div>
+        <div id="ui-layer">
+            <div class="hud-panel">
+                <span>Time: <span id="timer">0</span>s</span>
+                <button class="btn-restart hidden" id="restart-btn" onclick="returnToMenu()">Restart</button>
+            </div>
+            <div class="hud-panel">Points: <span id="score">0</span></div>
+        </div>
+
+        <div id="menu-overlay">
+            <h1 id="menu-title">Garden Sort</h1>
+            <p id="menu-desc">Help <b>Learn</b> organize the alphabet blocks! Sort them into A-Z order.</p>
+            
+            <div class="difficulty-select" id="menu-buttons">
+                <button class="btn-main" onclick="startGame('easy')">Easy (30s)</button>
+                <button class="btn-main" onclick="startGame('medium')">Medium (45s)</button>
+                <button class="btn-main" onclick="startGame('hard')">Hard (2 Stages)</button>
+            </div>
+            
+            <button id="next-stage-btn" class="btn-main hidden" onclick="startStage2()">Start Stage 2!</button>
+            
+            <p style="font-size: 0.9rem; margin-top: 15px;">Warning: Hard mode reshuffles and deducts 5s on a wrong move!</p>
+        </div>
+    </div>
+
+<script src="learngram_JS/Learns's-Alphabet-Adventure.js"></script>
+</body>
+</html>

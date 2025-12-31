@@ -7,6 +7,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
 <meta name="description" content="Learngram Family lesson: fetches Wikipedia + Commons images/audio/video, TTS, suggestions, responsive e-book." />
 <link rel="stylesheet" href="learngram_CSS/family.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.0/css/all.min.css" integrity="sha512-DxV+EoADOkOygM4IR9yXP8Sb2qwgidEmeqAEmDKIOfPRQZOWbXCzLC6vjbZyy0vPisbH2SyW27+ddLVCN+OMzQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
 <body>
   <div class="wrap" role="main">
@@ -53,8 +54,8 @@
             <div class="row" style="margin-top:12px">
               <div class="input-group">
                 <input id="familyInput" type="text" placeholder="Type a family member (e.g. 'Mother')" aria-label="family member" />
-                <button id="searchBtn" class="btn">Search</button>
-                <button id="ttsBtn" class="ghost" title="Speak last description">🔊</button>
+                <button id="searchBtn" class="btn"><i class="fas fa-paper-plane"></i></button>
+                <button id="ttsBtn" class="ghost" title="Speak last description"><i class="fas fa-volume-up"></i></button>
               </div>
             </div>
 
@@ -103,7 +104,7 @@
 
             <div style="margin-top:12px;display:flex;gap:8px;flex-wrap:wrap;align-items:center">
               <button id="saveBtn" class="btn">Save to Progress</button>
-              <button id="clearProgressBtn" class="ghost">Clear Progress</button>
+              <button id="clearProgressBtn" class="ghost"><i class="far fa-trash-alt"></i></button>
               <div id="progressMsg" class="status" style="margin-left:6px"></div>
             </div>
 

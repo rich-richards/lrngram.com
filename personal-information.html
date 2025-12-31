@@ -7,6 +7,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
 <meta name="description" content="Learngram personal info lesson: interactive chat assistant, media fetch, validation, TTS and local storage.">
 <link rel="stylesheet" href="learngram_CSS/personal-information.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.0/css/all.min.css" integrity="sha512-DxV+EoADOkOygM4IR9yXP8Sb2qwgidEmeqAEmDKIOfPRQZOWbXCzLC6vjbZyy0vPisbH2SyW27+ddLVCN+OMzQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
 <body>
   <div class="wrap">
@@ -41,7 +42,7 @@
             <h3>Options</h3>
             <div class="controls">
               <label class="status"><input id="autoSpeak" type="checkbox" checked /> Auto speak replies</label>
-              <button id="clearBtn" class="btn ghost">Clear saved info</button>
+              <button id="clearBtn" class="btn ghost"><i class="far fa-trash-alt"></i></button>
             </div>
             <div id="status" class="status" style="margin-top:8px"></div>
           </div>
@@ -62,8 +63,8 @@
 
             <div class="composer" role="form" aria-label="Chat composer">
               <input id="userInput" type="text" placeholder="e.g. 'My name is Jane', 'I'm 25', 'I'm from Kenya', 'I work as a teacher', 'My email is ...'"/>
-              <button id="sendBtn" class="btn">Send</button>
-              <button id="replayBtn" class="btn ghost" title="Replay last reply">🔊</button>
+              <button id="sendBtn" class="btn"><i class="fas fa-paper-plane"></i></button>
+              <button id="replayBtn" class="btn ghost" title="Replay last reply"><i class="fas fa-volume-up"></i></button>
             </div>
 
             <div class="media-row" aria-live="polite" style="margin-top:12px">
@@ -77,15 +78,21 @@
           <!-- MINI-GAME SECTION -->
           <h3 class="h3">Mini-game: Personal Information Chat Game</h3>
           <div class="timer" id="timer">Time Left: 30s</div>
-            <div class="chat-box" id="chatBox">
-            <div class="chat-message bot">👋 Hi! Let’s practice sharing personal information. What’s your name?</div>
-            </div>
+          <div class="chat-box" id="chatBox">
+          </div>
 
-            <div class="input-area">
-            <input type="text" id="UserInput" placeholder="Type your message..." />
-            <button id="SendBtn">Send</button>
-            </div>
-            <div id="scoreDisplay">Score: 0</div>
+          <div id="startScreen" style="text-align: center; padding: 20px;">
+          <button id="StartBtn">Start Game</button>
+          </div>
+          <div id="restartScreen" style="text-align: center; padding: 20px; display: none;">
+          <button id="RestartBtn">Restart Game</button>
+          </div>
+
+          <div class="input-area" id="inputArea" style="display: none;">
+          <input type="text" id="UserInput" placeholder="Type your message..." />
+          <button id="SendBtn"><i class="fas fa-paper-plane"></i></button>
+          </div>
+          <div id="scoreDisplay">Score: 0</div>
       
           <footer style="margin-top:12px;color:var(--muted)">Made with 💙 by Learngram — responsive personal information lesson.</footer>
           <a href="index.html">Back to home</a>

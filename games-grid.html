@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Learning Games Portal</title>
+    <!-- Load Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Load Roboto Font (as specified in the new CSS) -->
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+    <style>
+        /* [START] Custom Styles from User Input */
+        :root {
+            --bg: #f2f4f8;
+            --panel: #ffffff;
+            --blue: #3498db;
+            --blue-dark: #217dbb;
+            --text: #1f2937;
+            --muted: #6b7280;
+            --radius: 10px; /* Adjusted radius from 14px to 10px based on variable */
+            --max-width: 1100px;
+            
+            /* Semantic colors for game mechanics */
+            --success: rgb(0, 255, 0);
+            --success-border: #16a34a;
+            --warn: #fde047;
+            --warn-border: red;
+
+            /* Button States */
+            --new-btn-hover: hsl(234, 100%, 50%);
+            --new-btn-active: hsl(234, 100%, 30%);
+        }
+
+        body {
+            font-family: 'Roboto', sans-serif;
+            background-color: var(--bg);
+            color: var(--text);
+            overflow-x: hidden;
+            touch-action: manipulation;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        /* Mobile-first responsive adjustments */
+        @media (max-width: 640px) {
+            .hero-card {
+                padding: 1rem !important;
+            }
+            
+            .game-card {
+                padding: 1rem !important;
+            }
+
+            /* Ensure buttons are touch-friendly on mobile */
+            .theme-btn {
+                min-height: 44px;
+                font-size: 16px; /* Prevents zoom on iOS */
+            }
+
+            /* Improve text readability on mobile */
+            body {
+                font-size: 16px;
+                line-height: 1.6;
+            }
+        }
+
+        /* Tablet adjustments */
+        @media (min-width: 641px) and (max-width: 1024px) {
+            .theme-btn {
+                min-height: 42px;
+            }
+        }
+
+        /* Ensure images don't overflow on mobile */
+        img {
+            max-width: 100%;
+            height: auto;
+        }
+
+        /* Games grid: default to 2 columns on mobile; fallback to 1 column for very narrow screens */
+        .games-grid {
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+        }
+        @media (max-width: 360px) {
+            .games-grid {
+                grid-template-columns: repeat(1, minmax(0, 1fr));
+            }
+            .game img, .game .theme-btn {
+                height: auto;
+            }
+        }
+
+        /* Game image wrapper ensures images resize to container, crop to fit, and stay uniform */
+        .game-image-wrapper {
+            width: 100%;
+            max-width: 100%;
+            aspect-ratio: 16 / 9; /* consistent card image height */
+            overflow: hidden;
+            background-color: #f3f4f6; /* subtle placeholder background */
+            border-radius: 0.5rem;
+            display: block;
+        }
+        .game-image-wrapper img.game-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center;
+            display: block;
+            max-width: 100%;
+        }
+        /* Slightly taller images on larger screens */
+        @media (min-width: 768px) {
+            .game-image-wrapper {
+                aspect-ratio: 4 / 3;
+            }
+        }
+
+        /* General Panel Style */
+        .panel {
+            background-color: var(--panel);
+            border-radius: var(--radius);
+            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.1);
+        }
+
+        /* EXACT COLORS */
+        .text-exact-red { color: rgb(255, 0, 0) !important; }
+        .text-exact-green { color: rgb(0, 255, 0) !important; }
+
+        /* THEME BUTTONS */
+        .theme-btn {
+            background-color: var(--blue);
+            color: white;
+            border-radius: var(--radius);
+            transition: all 0.2s ease;
+            font-weight: 600;
+            box-shadow: 0 4px 6px rgba(52, 152, 219, 0.3);
+            border: none;
+            cursor: pointer;
+            min-height: 44px; /* Touch-friendly minimum height */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            -webkit-tap-highlight-color: rgba(52, 152, 219, 0.3);
+        }
+        .theme-btn:hover {
+            background-color: var(--new-btn-hover);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 12px rgba(52, 152, 219, 0.4);
+        }
+        .theme-btn:active {
+            transform: translateY(0);
+            background-color: var(--new-btn-active);
+        }
+        @media (hover: none) {
+            /* Remove hover effects on touch devices */
+            .theme-btn:hover {
+                transform: none;
+            }
+        }
+        
+        /* LETTER TILES */
+        .letter-btn {
+            transition: transform 0.2s, background-color 0.2s;
+            box-shadow: 0 4px 0 #e5e7eb;
+            border-radius: var(--radius);
+            background-color: var(--panel);
+            color: var(--blue);
+            border: 2px solid transparent;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            /* ... (omitted for brevity, no changes here) ... */
+        }
+        /* ... */
+
+        /* Portal-Specific Styles */
+        .header-bg {
+             background-color: var(--blue-dark); /* Darker blue for header */
+        }
+        .hero-card {
+            transition: transform 0.3s ease-in-out;
+        }
+        .hero-card:hover {
+            transform: translateY(-5px);
+        }
+        .game-card {
+            /* Applied the requested deep shadow here */
+            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.1);
+            border: 2px none; /* Use new variable for border */
+            transition: transform 0.2s;
+        }
+        .game-card:hover {
+            transform: translateY(-3px);
+            /* Updated shadow on hover to ensure smooth transition */
+            box-shadow: 0 15px 35px -5px rgba(0, 0, 0, 0.15), 0 12px 15px -8px rgba(0, 0, 0, 0.15); 
+        }
+        
+        /* Utility overrides to use CSS variables for existing elements */
+        .text-theme-primary { color: var(--blue); }
+        .text-theme-secondary { color: var(--blue-dark); }
+        .border-theme-primary { border-color: var(--blue); }
+
+        /* Mobile menu panel styling */
+        #mobileMenu nav {
+            background-color: var(--blue-dark);
+            border-radius: 10px;
+        }
+        #mobileMenu a {
+            color: #ffffff;
+            display: block;
+            padding: 0.75rem 1rem;
+            text-decoration: none;
+        }
+        #mobileMenu a:hover {
+            background-color: rgba(255,255,255,0.06);
+        }
+    </style>
+</head>
+<body class="min-h-screen">
+
+    <!-- Header & Menu: Responsive Navigation -->
+    <header class="header-bg shadow-lg sticky top-0 z-10">
+        <nav class="max-w-7xl mx-auto px-3 sm:px-4 md:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-14 sm:h-16">
+                <div class="flex items-center">
+                    <h1 class="text-xl sm:text-2xl font-bold text-white tracking-wider">LearnVerse</h1>
+                </div>
+                <!-- Menu Links: Hidden on extra small, shown as space-x-4 on larger screens -->
+                <div class="hidden sm:flex space-x-2 md:space-x-4">
+                    <a href="index.html" class="text-white hover:text-indigo-200 px-2 md:px-3 py-2 rounded-md text-xs sm:text-sm font-medium transition duration-150">Home</a>
+                    <a href="about.html" class="text-white hover:text-indigo-200 px-2 md:px-3 py-2 rounded-md text-xs sm:text-sm font-medium transition duration-150">About</a>
+                    <a href="donation.html" class="bg-blue-dark text-white hover:bg-blue-dark/80 px-2 md:px-3 py-2 rounded-md text-xs sm:text-sm font-medium transition duration-150">Donate</a>
+                </div>
+                <!-- Mobile menu toggle (small screens) -->
+                <button id="mobileMenuButton" class="sm:hidden text-white focus:outline-none p-2" aria-label="Menu" aria-controls="mobileMenu" aria-expanded="false" type="button">
+                    <!-- Hamburger icon -->
+                    <svg id="hamburgerIcon" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7" />
+                    </svg>
+                    <!-- Close icon (hidden by default) -->
+                    <svg id="closeIcon" class="h-6 w-6 hidden" viewBox="0 0 24 24" stroke="currentColor" fill="none" aria-hidden="true">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
+                    </svg>
+                </button>
+            </div>
+        </nav>
+        <!-- Mobile menu: hidden by default, displayed when the toggle button is clicked -->
+        <div id="mobileMenu" class="sm:hidden hidden" aria-hidden="true">
+            <div class="max-w-7xl mx-auto px-3 sm:px-4 md:px-6 lg:px-8 py-2">
+                <nav class="rounded-md overflow-hidden shadow-sm" style="background:var(--blue-dark);">
+                    <a href="index.html" class="block px-4 py-3 text-white hover:bg-white/10">Home</a>
+                    <a href="about.html" class="block px-4 py-3 text-white hover:bg-white/10">About</a>
+                    <a href="donation.html" class="block px-4 py-3 text-white hover:bg-white/10">Donate</a>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <main class="max-w-7xl mx-auto px-3 sm:px-4 md:px-6 lg:px-8 py-4 sm:py-6 md:py-8">
+
+        <!-- Superhero Introduction Section: Responsive Layout -->
+        <section id="about-learn" class="mt-4 sm:mt-6 md:mt-8 mb-6 sm:mb-8 md:mb-12 p-4 sm:p-5 md:p-6 panel hero-card flex flex-col items-center sm:flex-row sm:items-start sm:space-x-6 md:space-x-8">
+            <div class="flex-shrink-0 mb-4 sm:mb-0">
+                <!-- Hero Image with responsive sizing and fallback -->
+                <img 
+                    src="images/Learn-2-image.png" 
+                    alt="Hero Character Learn" 
+                    class="w-20 h-auto sm:w-24 md:w-32 rounded-full shadow-lg"
+                    onerror="this.onerror=null; this.src='https://placehold.co/128x128/3498db/ffffff?text=L'"
+                />
+            </div>
+            
+            <div class="space-y-3 sm:space-y-4 text-center sm:text-left sm:flex-grow">
+                <h2 class="text-2xl sm:text-3xl md:text-4xl font-extrabold text-theme-secondary mb-2 sm:mb-3 md:mb-4">⭐ Meet the Hero: Learn!</h2>
+                <p class="text-base sm:text-lg md:text-xl font-semibold leading-relaxed">
+                    <span class="block sm:inline">Name: Learn</span>
+                    <span class="hidden sm:inline ml-2 md:ml-4 text-exact-green">|</span>
+                    <span class="block sm:inline sm:ml-2 md:ml-4">Superpower: Instant Knowledge Transfer</span>
+                    <span class="hidden sm:inline ml-2 md:ml-4 text-exact-green">|</span>
+                    <span class="block sm:inline sm:ml-2 md:ml-4">Mission: To make the process of learning fun, fast, and effortless for everyone!</span>
+                </p>
+                <p class="text-sm sm:text-base md:text-lg leading-relaxed">
+                    Learn isn't just a friendly face; he is the fastest educator in the universe! Clad in bright colors that represent curiosity and energy, Learn uses his Instant Knowledge Transfer power to help students immediately grasp tough concepts.
+                </p>
+                <p class="text-sm sm:text-base md:text-lg italic text-theme-primary leading-relaxed">
+                    Team up with Learn today—your journey to instant knowledge starts now!
+                </p>
+            </div>
+        </section>
+
+        <!-- Initial Game Display Section: Responsive Grid -->
+        <section id="games" class="mt-6 sm:mt-8 md:mt-12">
+            <h2 class="text-2xl sm:text-3xl font-bold text-gray-800 mb-4 sm:mb-5 md:mb-6 border-b-2 pb-2 border-theme-primary">Learning Games</h2>
+            <!-- Grid displays 2 columns on mobile, 2 on small screens, and 3 on large screens -->
+            <div class="grid games-grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-4 md:gap-6">
+                
+                <!-- Game Card 1: Direct Link to game -->
+                <div class="game p-4 sm:p-5 md:p-6 panel game-card">
+                   
+                    <!-- Game Image with wrapper for responsive crop -->
+                <div class="game-image-wrapper mb-3 sm:mb-4 rounded-md shadow-sm" role="img" aria-label="Learn's Alphabet Classifier image">
+                    <img 
+                        src="images/Alphabet-game.png" 
+                        alt="Learn's Alphabet Classifier" 
+                        class="game-image"
+                        onerror="this.onerror=null; this.src='https://placehold.co/400x160/217dbb/ffffff?text=Alphabet+Classifier'"
+                    />
+                </div>
+
+                    <p class="text-sm sm:text-base text-gray-600 mb-3 sm:mb-4">Alphabet Adventure: Sort, Learn & Play!</p>
+                    <!-- Button uses simple navigation -->
+                    <button id="playButton" onclick="window.location.href='Learn\'s-Alphabet-Adventure.html';" class="w-full theme-btn py-2.5 sm:py-2 px-4 shadow-md text-sm sm:text-base min-h-[44px]">
+                        Play Game
+                    </button>
+                </div>
+                
+                <!-- Placeholder for future games -->
+                <div class="p-4 sm:p-5 md:p-6 panel text-center flex items-center justify-center rounded-[var(--radius)] min-h-[200px] sm:min-h-[250px]">
+                    <p class="text-sm sm:text-base text-gray-500">More Chapters Coming Soon...</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Dynamic Game Grid Section: Removed, as it is no longer needed with the direct link -->
+        
+    </main>
+
+    <script>
+        // All previous showGameLinkAndGrid and showGameGrid functions are removed
+        // because the "Play Game" button now uses a direct window.location.href call.
+        (function () {
+            const btn = document.getElementById('mobileMenuButton');
+            const menu = document.getElementById('mobileMenu');
+            const hamburgerIcon = document.getElementById('hamburgerIcon');
+            const closeIcon = document.getElementById('closeIcon');
+            if (!btn || !menu) return;
+            function openMenu() {
+                menu.classList.remove('hidden');
+                menu.setAttribute('aria-hidden', 'false');
+                btn.setAttribute('aria-expanded', 'true');
+                if (hamburgerIcon) hamburgerIcon.classList.add('hidden');
+                if (closeIcon) closeIcon.classList.remove('hidden');
+            }
+            function closeMenu() {
+                menu.classList.add('hidden');
+                menu.setAttribute('aria-hidden', 'true');
+                btn.setAttribute('aria-expanded', 'false');
+                if (hamburgerIcon) hamburgerIcon.classList.remove('hidden');
+                if (closeIcon) closeIcon.classList.add('hidden');
+            }
+            btn.addEventListener('click', function (e) {
+                if (menu.classList.contains('hidden')) {
+                    openMenu();
+                } else {
+                    closeMenu();
+                }
+            });
+            // Close when clicking outside the menu
+            document.addEventListener('click', function (e) {
+                if (!menu.classList.contains('hidden') && !menu.contains(e.target) && !btn.contains(e.target)) {
+                    closeMenu();
+                }
+            });
+            // Close on Escape
+            document.addEventListener('keydown', function (e) {
+                if (e.key === 'Escape') closeMenu();
+            });
+            // Close when a menu link is clicked
+            menu.querySelectorAll('a').forEach(function (link) {
+                link.addEventListener('click', function () { closeMenu(); });
+            });
+        })();
+    </script>
+</body>
+</html>

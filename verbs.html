@@ -6,7 +6,8 @@
 <title> Verbs lesson</title>
 <meta name="description" content="Learngram Verbs Lesson — type a verb, view present/past/future forms and fetch matching video/image/audio from Wikimedia Commons. TTS fallback included." />
 <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="learngram_CSS/verbs.css">
+<link rel="stylesheet" href="learngram_CSS/verbs.css">  
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.0/css/all.min.css" integrity="sha512-DxV+EoADOkOygM4IR9yXP8Sb2qwgidEmeqAEmDKIOfPRQZOWbXCzLC6vjbZyy0vPisbH2SyW27+ddLVCN+OMzQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
 <body>
   <div class="container" role="main">
@@ -42,9 +43,9 @@
               <div class="controls">
                 <div class="input-row" role="form" aria-label="Verb input form">
                   <input id="verbInput" type="text" placeholder="Type a verb (e.g., run, eat)" aria-label="Verb input" />
-                  <button id="fetchBtn" class="btn" title="Fetch media">Fetch</button>
-                  <button id="speakBtn" class="btn" title="Speak sentence">🔊 Speak</button>
-                  <button id="clearBtn" class="btn ghost" title="Clear">Clear</button>
+                  <button id="fetchBtn" class="btn" title="Fetch media"><i class="fas fa-paper-plane"></i></button>
+                  <button id="speakBtn" class="btn" title="Speak sentence"><i class="fas fa-volume-up"></i></button>
+                  <button id="clearBtn" class="btn ghost" title="Clear"><i class="far fa-trash-alt"></i></button>
                 </div>
 
                 <div class="note">Only a single alphabetic verb is accepted. The app validates the word and searches forms (base, present, past, future) for relevant media.</div>
