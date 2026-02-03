@@ -161,15 +161,15 @@
         timerInterval: null
     };
 
-    // --- CHARACTER PHYSICS (Tall Dimensions) ---
+    // --- CHARACTER PHYSICS (Learn a bit smaller) ---
     const learnChar = {
         x: 100,
         y: 400,
         targetX: 100,
         targetY: 400,
         speed: 0.1, 
-        width: 190, 
-        height: 250, 
+        width: 80, 
+        height: 220, 
         state: 'idle'
     };
 
@@ -181,13 +181,13 @@
         canvas.height = wrapper.offsetHeight;
         
         // Responsive character sizing based on canvas dimensions
-        // Base dimensions: 190x250 for 1100px width
+        // Base dimensions: 160x220 for 1100px width (slightly smaller Learn)
         const baseWidth = 1100;
         const scaleFactor = Math.min(canvas.width / baseWidth, 1);
         
         // Scale character size, but ensure minimum size for very small screens
-        learnChar.width = Math.max(190 * scaleFactor, 120);
-        learnChar.height = Math.max(250 * scaleFactor, 160);
+        learnChar.width = Math.max(160 * scaleFactor, 90);
+        learnChar.height = Math.max(220 * scaleFactor, 140);
         
         // Adjust character position if it's off-screen
         if (learnChar.x + learnChar.width > canvas.width) {
@@ -399,15 +399,26 @@
             btn.className = 'letter-btn';
             btn.innerText = letter;
             btn.dataset.index = index;
-            
-            // Dynamic sizing is now handled by the CSS classes (e.g., #block-container.layout-26 .letter-btn)
+            // ensure no extra spacing
+            btn.style.margin = '0';
+            btn.style.boxSizing = 'border-box';
 
             const color = rainbowColors[index % rainbowColors.length];
             btn.style.backgroundColor = color;
             
-            btn.onclick = (e) => handleBlockClick(index, e.target);
+            // use currentTarget so the handler receives the real button element
+            btn.addEventListener('click', (e) => handleBlockClick(index, e.currentTarget));
             container.appendChild(btn);
         });
+
+        // Force a strict 2-row table with no gaps:
+        const cols = Math.ceil(numLetters / 2);
+        // Use the first button's computed width to set exact column widths
+        const firstBtn = container.querySelector('.letter-btn');
+        const btnWidth = firstBtn ? firstBtn.offsetWidth || parseInt(getComputedStyle(firstBtn).width, 10) : 50;
+        container.style.gridTemplateColumns = `repeat(${cols}, ${btnWidth}px)`;
+        container.style.width = `${cols * btnWidth}px`;
+        container.style.gap = '0';
     }
 
     function getBlockCenter(index) {

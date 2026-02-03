@@ -236,6 +236,12 @@
             border: 1px solid rgba(0,0,0,0.1); 
             width: 50px; 
             height: 50px;
+            margin: 0; /* remove spacing between blocks */
+            box-sizing: border-box;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 0;
             /* 🟢 CHANGE HERE: Apply the border-radius variable */
             border-radius: var(--radius); 
             font-size: 1.2rem;

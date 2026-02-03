@@ -1,0 +1,161 @@
+/* Test Game Styles - follow project's design tokens */
+:root{
+    --page-bg: #f2f4f8;
+    --panel: #ffffff;
+    --blue: #3498db;
+    --blue-dark: #217dbb;
+    --btn-blue: #1474e2;
+    --text: #0f1724;
+    --muted: #6b7280;
+    --radius: 10px;
+    --max-w: 1100px;
+    --new-btn-hover: hsl(234, 100%, 50%);
+    --new-btn-active: hsl(234, 100%, 30%);
+}
+
+/* Basic layout copied/adapted from the project's adventure css */
+body{background:var(--page-bg);font-family: 'Roboto', sans-serif;margin:0;display:flex;align-items:center;justify-content:center;padding:10px;min-height:100vh;color:var(--text)}
+
+#game-wrapper{position:relative;width:100%;max-width:var(--max-w);height:600px;min-height:400px;background:#333;border-radius:var(--radius);box-shadow:0 10px 25px rgba(0,0,0,0.1);overflow:hidden;border:5px solid var(--panel)}
+canvas{display:block;width:100%;height:100%}
+#assets{display:none}
+
+#ui-layer{position:absolute;top:0;left:0;width:100%;padding:20px;box-sizing:border-box;display:flex;justify-content:space-between;pointer-events:none;z-index:10}
+.hud-panel{background:var(--panel);padding:10px 20px;border-radius:var(--radius);font-weight:bold;font-size:1.1rem;box-shadow:0 4px 6px rgba(0,0,0,0.1);color:var(--blue-dark);pointer-events:auto;display:flex;align-items:center;gap:15px}
+.btn-restart{background:var(--blue);color:#fff;border:none;padding:5px 10px;border-radius:5px;cursor:pointer;font-weight:bold;}
+.btn-restart:hover {background: var(--new-btn-hover);}
+.btn-restart:active {background: var(--new-btn-active);}
+.btn-main{padding:15px 30px;font-size:1.1rem;background:var(--btn-blue);color:white;border:none;border-radius:var(--radius);cursor:pointer;font-weight:bold}
+.btn-main:hover{background:var(--new-btn-hover)}
+.btn-main:active{background:var(--new-btn-active)}
+.hidden{display:none !important}
+
+/* Letter table (two rows, no column gap, rainbow backgrounds) */
+#block-container{
+    position:absolute;
+    bottom:30px;
+    left:50%;
+    transform:translateX(-50%);
+    display:grid;
+    justify-content:center;
+    gap:0; /* no gap between rows or columns */
+    width:auto; /* shrink to fit content so columns sit together */
+    max-width:none;
+    padding-bottom:10px;
+    z-index:5;
+    grid-auto-flow: column; /* fill columns so we get two rows */
+    grid-auto-columns: 48px; /* fixed column width matches button size */
+    grid-template-rows: repeat(2, auto);
+}
+
+.letter-btn{
+    background:#3498db;
+    color:#fff !important;
+    border:none;
+    width:48px;
+    height:48px;
+    padding:0;
+    aspect-ratio:1/1; /* ensure square where supported */
+    border-radius:10px; /* slightly rounded */
+    font-weight:bold;
+    cursor:pointer;
+    font-size:1rem;
+    box-shadow:0 2px 0 rgba(0,0,0,0.12);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    transition:transform .12s, opacity .12s;
+}
+.letter-btn:active{transform:translateY(1px)}
+.letter-btn.selected{opacity:0.4}
+
+/* Rainbow cycling backgrounds (7 colors) */
+.letter-btn:nth-child(7n+1){background:#ff4b4b;color:#fff}
+.letter-btn:nth-child(7n+2){background:#ff9f1c;color:#fff}
+.letter-btn:nth-child(7n+3){background:#ffca3a;color:#fff}
+.letter-btn:nth-child(7n+4){background:#8ac926;color:#fff}
+.letter-btn:nth-child(7n+5){background:#1982c4;color:#fff}
+.letter-btn:nth-child(7n+6){background:#6a4c93;color:#fff}
+.letter-btn:nth-child(7n+7){background:#ff6bcb;color:#fff}
+
+/* Target display */
+#target-display{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);z-index:15;text-align:center;pointer-events:none}
+#target-number{font-size:4rem;color:#1474e2;font-weight:900;text-transform:uppercase;letter-spacing:4px;background:white;border:4px solid #1474e2;padding:20px 40px;border-radius:var(--radius);box-shadow:0 4px 6px rgba(0,0,0,0.1)}
+#selected-word{margin-top:10px;font-size:2rem;color:var(--blue-dark);min-height:34px}
+
+/* /* Makes the character look like they are reaching up/carrying something heavy */
+.char-carrying {
+    transform: scaleY(0.95) !important; /* Slight squash for weight */
+    filter: brightness(1.1);
+}
+
+#carried-letter {
+    transition: transform 0.1s ease-out;
+    background: #ffd700;
+    border: 3px solid #fff;
+    border-radius: 8px;
+    padding: 5px 10px;
+    font-weight: bold;
+    box-shadow: 0 4px 0 rgba(0,0,0,0.2);
+    z-index: 10;
+}
+/* Menu overlay */
+#menu-overlay{
+    position:absolute;
+    top:0;left:0;
+    width:100%;height:100%;
+    background:rgba(255,255,255,0.95);
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+    z-index:100;
+    padding:32px;
+    box-sizing:border-box;
+    text-align:center;
+}
+#menu-buttons{
+    display:flex;
+    gap:16px;
+    flex-wrap:wrap;
+    justify-content:center;
+    width:100%;
+    max-width:520px;
+}
+#menu-buttons button{
+    min-width:180px;
+    flex:1 1 180px;
+}
+h1{color:var(--blue-dark);font-size:3rem;margin:0 0 10px;text-transform:uppercase}
+p{color:var(--muted);font-size:1.1rem;max-width:600px;text-align:center}
+
+/* Responsive */
+@media(max-width:768px){
+    #game-wrapper{height:500px}
+    #target-number{font-size:3rem}
+    #selected-word{font-size:1.6rem}
+    .btn-main{padding:12px 20px}
+    #menu-overlay{padding:24px}
+    h1{font-size:2.4rem}
+    p{font-size:1rem; max-width:520px}
+    .hud-panel{font-size:0.95rem;padding:8px 16px;gap:12px}
+    #ui-layer{padding:15px}
+}
+@media(max-width:480px){
+    #game-wrapper{height:450px}
+    /* make canvas and bg scale to wrapper exactly */
+    #game-wrapper canvas, #img-bg { width:100%; height:100%; object-fit:cover; }
+    #block-container{max-width:none;width:auto;grid-auto-columns:28px;grid-template-rows:repeat(2,auto);gap:0}
+    .letter-btn{width:28px;height:28px;padding:0;font-size:0.85rem;border-radius:10px;margin:0;box-sizing:border-box}
+    #carried-letter{width:32px;height:32px;border-radius:10px}
+    #target-number{font-size:3.6rem}
+    #selected-word{font-size:1.2rem}
+    #menu-overlay{padding:18px}
+    #menu-buttons{flex-direction:column;align-items:stretch;gap:12px}
+    #menu-buttons button{width:100%;min-width:0;flex:1 1 auto}
+    h1{font-size:2rem}
+    p{font-size:0.95rem; max-width:100%}
+    .hud-panel{font-size:0.8rem;padding:6px 12px;gap:8px}
+    #ui-layer{padding:10px}
+    .btn-restart{padding:3px 6px;font-size:0.75rem}
+}
