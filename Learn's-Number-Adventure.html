@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Number Match Adventure</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <link rel="stylesheet" href="learngram_CSS/Learn's-Number-Adventure.css">
+</head>
+<body>
+    
+    <audio id="music" loop src="audio/bg_music.mp3" preload="auto"></audio>
+
+    <div id="assets">
+        <img id="img-learn" src="images/Learn.png" alt="Learn Character">
+        <img id="img-bg" src="images/Garden.png" alt="Garden Background">
+    </div>
+
+    <div id="game-wrapper">
+        <canvas id="gameCanvas"></canvas>
+        <div id="block-container"></div>
+
+        <div id="ui-layer">
+            <div class="hud-panel">
+                <span>Time: <span id="timer">0</span>s</span>
+                <button class="btn-restart hidden" id="restart-btn" onclick="returnToMenu()">Restart</button>
+            </div>
+            <div class="hud-panel">Points: <span id="score">0</span></div>
+        </div>
+
+        <!-- Big target number display -->
+        <div id="target-display" class="hidden">
+            <div id="target-number">ONE</div>
+            <div id="selected-word"></div>
+        </div>
+
+        <!-- Carried letter visual -->
+        <div id="carried-letter" class="hidden"></div>
+
+        <div id="menu-overlay">
+            <h1 id="menu-title">Number Match</h1>
+            <p id="menu-desc">Help <b>Learn</b> spell the number words! Click the letters in order to match the target number.</p>
+            
+            <div class="difficulty-select" id="menu-buttons">
+                <button class="btn-main" onclick="startGame('easy')">Easy • 1–20 (2 Stages)</button>
+                <button class="btn-main" onclick="startGame('medium')">Medium • 20–50 (3 Stages)</button>
+                <button class="btn-main" onclick="startGame('hard')">Hard • 50–100 (5 Stages)</button>
+            </div>
+            
+            <button class="btn-main hidden" id="next-stage-btn" onclick="startNextStage()">Continue to Next Stage</button>
+            
+            <p style="font-size: 0.9rem; margin-top: 15px;">Select letters in order. On hard mode a wrong letter deducts 5s and reshuffles the table!</p>
+        </div>
+    </div>
+
+<script src="learngram_JS/Learn's-Number-Adventure.js"></script>
+</body>
+</html>
