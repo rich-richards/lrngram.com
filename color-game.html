@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Learn's Color Garden</title>
+    <link rel="stylesheet" href="learngram_CSS/color-game.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+</head>
+<body>
+    <audio id="music" loop src="audio/bg_music.mp3" preload="auto"></audio>
+    <audio id="sfx-pick-correct" src="audio/sfx_correct.mp3"></audio>
+    <audio id="sfx-pick-wrong" src="audio/sfx_wrong.mp3"></audio>
+    <audio id="sfx-success" src="audio/sfx_success.mp3"></audio>
+
+    <div id="assets" aria-hidden="true">
+        <!-- placeholder images: replace with real assets -->
+        <img id="img-learn" src="images/Learn.png" alt="Learn Character" style="display:none">
+        <img id="img-mama" src="images/MamaLearn.png" alt="Mama Learn" style="display:none">
+        <img id="img-bg" src="images/Garden.png" alt="Garden Background" style="display:none">
+    </div>
+
+    <div id="game-wrapper">
+        <div id="hud">
+            <div class="panel">Target: <span id="target-label">-</span></div>
+            <div class="panel">Time: <span id="timer">0</span>s</div>
+            <div class="panel">Score: <span id="score">0</span></div>
+            <div class="panel">Basket: <span id="collected">0</span>/<span id="required">5</span></div>
+        </div>
+
+        <div id="viewport">
+            <div id="background"></div>
+            <div id="world">
+                <img id="mama" src="images/MamaLearn.png" alt="Mama Learn" class="npc">
+                <div id="player">
+                    <img id="player-img" src="images/Learn.png" alt="Learn">
+                </div>
+                <div id="rows"></div>
+            </div>
+        </div>
+
+        <div id="menu-overlay">
+            <h1>🌈 Color Garden</h1>
+            <p>Help Learn fetch fruits that match the requested color.</p>
+            <div class="difficulty-select">
+                <button class="btn-main" data-mode="easy">Easy — 5 fruits (45s)</button>
+                <button class="btn-main" data-mode="medium">Medium — 7 fruits (60s)</button>
+                <button class="btn-main" data-mode="hard">Hard — 10 fruits (120s)</button>
+            </div>
+            <button id="start-btn" class="btn-main hidden">Start</button>
+            <p class="hint">Use ← → or A / D to move. Click a fruit when near it.</p>
+        </div>
+
+        <div id="game-over" class="hidden">
+            <h2 id="end-title">Time's up!</h2>
+            <p id="end-desc"></p>
+            <button id="retry" class="btn-main">Play Again</button>
+        </div>
+    </div>
+
+    <script src="learngram_JS/color-game.js"></script>
+</body>
+</html>
